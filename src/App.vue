@@ -5,9 +5,6 @@ export default {
 </script>
 
 <template>
-  <h1 class="text-danger fw-bold">
-    Route:
-  </h1>
   <router-view></router-view>
 </template>
 

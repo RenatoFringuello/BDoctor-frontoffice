@@ -1,17 +1,11 @@
 <script>
-import HelloWorld from '../components/HelloWorld.vue';
-
 export default {
     name: 'AppHome',
-    components: { HelloWorld },
 }
 </script>
 
 <template>
-    <div>
-        Home
-        <HelloWorld />
-    </div>
+    <h1 class="text-danger fw-bold">Hello World</h1>
 </template>
 
 <style lang="scss" scoped></style>
