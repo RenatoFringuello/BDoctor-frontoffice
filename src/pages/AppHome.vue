@@ -8,4 +8,6 @@ export default {
     <h1 class="text-danger fw-bold">Hello World</h1>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+    @use '../styles/general.scss' as *;
+</style>
