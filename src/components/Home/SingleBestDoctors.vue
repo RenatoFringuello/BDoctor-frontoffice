@@ -1,6 +1,7 @@
 <script>
 export default {
     name: 'HomeBestDoctors',
+    props: ['title']
 }
 </script>
 
@@ -8,7 +9,7 @@ export default {
     <section id="cardiology" class="my-5">
         <div class="container">
             <h3>
-                Cardiology
+                {{ title }}
             </h3>
         </div>
         <div class="container">

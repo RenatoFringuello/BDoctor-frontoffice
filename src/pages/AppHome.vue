@@ -1,10 +1,38 @@
 <script>
+import { store } from '../store';
 import HomeJumbo from '../components/Home/HomeJumbo.vue';
 import SingleBestDoctors from '../components/Home/SingleBestDoctors.vue';
 
 export default {
     name: 'AppHome',
-    components: { HomeJumbo, SingleBestDoctors }
+    components: { HomeJumbo, SingleBestDoctors },
+    data() {
+        return {
+            store,
+            heigth: '1345px',
+            marginButton: '0px',
+            buttonTxt: 'View All'
+        }
+    },
+    methods: {
+        showMoreDoc() {
+            if (this.heigth == '1345px') {
+                this.heigth = 'auto'
+                this.buttonTxt = 'Close'
+                this.marginButton = '0px'
+                console.log('open')
+            } else {
+                this.heigth = '1345px'
+                this.buttonTxt = 'View All'
+                this.marginButton = '200px'
+                console.log('close')
+            }
+            console.log('click')
+        }
+    },
+    created() {
+        this.store.getDataApi('specializations');
+    },
 }
 </script>
 
@@ -12,13 +40,17 @@ export default {
     <main>
         <HomeJumbo />
 
-        <section id="best-doctor">
+        <section id="best-doctor" class="py-5 position-relative">
             <h2 class="text-center text-uppercase fw-bold mt-5">Best Doctors</h2>
             <!-- To do: Generare i vari campi e i vari medici in modo dinamico -->
-            <SingleBestDoctors />
-            <SingleBestDoctors />
-            <SingleBestDoctors />
 
+            <div class="doctors-dropdown position-relative">
+                <SingleBestDoctors v-for="specialization in store.specializationList"
+                    :title="specialization.name.charAt(0).toUpperCase().substring() + specialization.name.slice(1)" />
+            </div>
+            <div class="more-doctors position-absolute bottom-0 start-0 w-100 d-flex">
+                <button class="btn btn-primary doc-btn m-auto" @click="showMoreDoc()">{{ buttonTxt }}</button>
+            </div>
         </section>
 
     </main>
@@ -26,4 +58,24 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
+
+section#best-doctor {
+    background-color: white;
+}
+
+div.doctors-dropdown {
+    height: v-bind(heigth);
+    overflow-y: hidden;
+
+    section:last-child {
+        margin-bottom: 100px !important;
+    }
+}
+
+div.more-doctors {
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    margin-top: v-bind(marginButton)
+}
 </style>
