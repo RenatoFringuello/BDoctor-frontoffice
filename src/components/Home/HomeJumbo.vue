@@ -32,7 +32,7 @@ export default {
                     <span class="align-middle">Search a</span>
                     <select name="search" id="search">
                         <option v-for="specilization in store.specializationList" :value="specilization.name">
-                            {{ specilization.name }}</option>
+                            {{ specilization.name.toUpperCase() }}</option>
                     </select>
                     <span class="align-middle">in<span class="fw-bold">New York</span>
                     </span>
@@ -117,9 +117,31 @@ div.search-contains {
 }
 
 @media screen and (max-width:600px) {
-    div.jumbo-area {
-        div.search-bar {
-            width: 100%;
+    div.search-contains {
+        span {
+            font-size: .9rem;
+        }
+
+        select {
+            width: 150px;
+            font-size: .9rem;
+        }
+    }
+}
+
+@media screen and (max-width:446px) {
+    div.search-contains {
+        span {
+            font-size: .8rem;
+            margin: 0 .3rem;
+
+        }
+
+        select {
+            width: 100px;
+            font-size: .8rem;
+            padding: .1rem .4rem;
+
         }
     }
 }
