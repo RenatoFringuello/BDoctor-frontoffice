@@ -43,10 +43,10 @@ export default {
 
 section#jumbo {
     width: 100%;
-    height: 750px;
+    min-height: 750px;
 
-    background: #19b2b5;
-    background: linear-gradient(0deg, #19b2b5 0%, #19b2b5 47%, #0c77aa 99%, #0c77aa 100%);
+    background: $light-doc-color;
+    background: linear-gradient(0deg, $light-doc-color 0%, $light-doc-color 47%, $light-pro-color 99%, $light-pro-color 100%);
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -89,7 +89,7 @@ div.search-contains {
         border: 0;
         outline: none;
         background-color: white;
-        border: 1px solid $green-site;
+        border: 1px solid $light-doc-color;
         border-radius: 2rem;
         padding: .2rem .8rem;
         text-align: center;
@@ -105,6 +105,14 @@ div.search-contains {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+    }
+}
+
+@media screen and (max-width:600px) {
+    div.jumbo-area {
+        div.search-bar {
+            width: 100%;
         }
     }
 }

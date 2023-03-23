@@ -39,7 +39,7 @@ export default {
                             <a class="nav-link me-3" :href="`http://${backOfficeUrl}/login`">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn big-btn" :href="`http://${backOfficeUrl}/register`">You are a doctor?</a>
+                            <a class="nav-link btn big-btn" :href="`http://${backOfficeUrl}/register`">Are you a doctor?</a>
                         </li>
                     </ul>
                 </div>

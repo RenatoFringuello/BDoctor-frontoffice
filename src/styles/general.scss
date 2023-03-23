@@ -14,15 +14,15 @@ body {
 
 .big-btn {
     color: white;
-    background-color: $green-site;
+    background-color: $light-doc-color;
     border-radius: 3rem;
     padding: .4rem .6rem;
     font-weight: bold;
 
     &:hover {
-        background-color: $green-site-dark;
+        background-color: $main-doc-color;
         color: white;
         transition: box-shadow .2s;
-        box-shadow: $blu-site 0px 10px 15px -10px;
+        box-shadow: $light-pro-color 0px 10px 15px -10px;
     }
 }
