@@ -34,7 +34,7 @@ export default {
                         <option v-for="specilization in store.specializationList" :value="specilization.name">
                             {{ specilization.name }}</option>
                     </select>
-                    <span class="align-middle">to<span class="fw-bold">New York</span>
+                    <span class="align-middle">in<span class="fw-bold">New York</span>
                     </span>
                     <div class="btn btn-primary doc-btn search-btn position-relative">
                         <i class="fa-solid fa-magnifying-glass position-absolute"></i>
