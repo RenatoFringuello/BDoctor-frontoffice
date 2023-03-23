@@ -6,7 +6,15 @@ export default {
     data() {
         return {
             store,
+            // specializationsApiUrl: 'http://127.0.0.1:8000/api/specializations',
+            // specializationsList: '',
         }
+    },
+    methods: {
+
+    },
+    created() {
+        this.store.getDataApi('specializations');
     },
 }
 </script>
@@ -23,9 +31,8 @@ export default {
                 <div class="search-contains w-100">
                     <span class="align-middle">Search a</span>
                     <select name="search" id="search">
-                        <option value="boh">Boh</option>
-                        <option value="boh">Boh2</option>
-                        <option value="boh">Boh3</option>
+                        <option v-for="specilization in store.specializationList" :value="specilization.name">
+                            {{ specilization.name }}</option>
                     </select>
                     <span class="align-middle">to<span class="fw-bold">New York</span>
                     </span>
