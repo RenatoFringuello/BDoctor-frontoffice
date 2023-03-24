@@ -20,9 +20,9 @@ export default {
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <router-link :to="'/'" class="navbar-brand">
                     <img :src="store.getImgPath('B-Doc-Logo', 'png')" alt="BDoc Logo" id="mail-logo">
-                </a>
+                </router-link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -31,7 +31,7 @@ export default {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Home</a>
+                            <router-link :to="'/'" class="nav-link" aria-current="page">Home</router-link>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
@@ -39,7 +39,8 @@ export default {
                             <a class="nav-link me-3" :href="`http://${backOfficeUrl}/login`">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn big-btn" :href="`http://${backOfficeUrl}/register`">Are you a doctor?</a>
+                            <a class="nav-link btn big-btn" :href="`http://${backOfficeUrl}/register`">Are you a
+                                doctor?</a>
                         </li>
                     </ul>
                 </div>
