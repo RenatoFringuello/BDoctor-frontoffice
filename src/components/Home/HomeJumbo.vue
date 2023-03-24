@@ -83,38 +83,38 @@ div.jumbo-area {
     }
 }
 
-div.search-contains {
-    span {
-        font-size: 1.5rem;
-        margin: 0 .5rem;
-        text-transform: uppercase;
-    }
+// div.search-contains {
+//     span {
+//         font-size: 1.5rem;
+//         margin: 0 .5rem;
+//         text-transform: uppercase;
+//     }
 
-    select {
-        width: 150px;
-        height: 40px;
-        border: 0;
-        outline: none;
-        background-color: white;
-        border: 1px solid $light-doc-color;
-        border-radius: 2rem;
-        padding: .2rem .8rem;
-        text-align: center;
-        vertical-align: middle;
-    }
+//     select {
+//         width: 150px;
+//         height: 40px;
+//         border: 0;
+//         outline: none;
+//         background-color: white;
+//         border: 1px solid $light-doc-color;
+//         border-radius: 2rem;
+//         padding: .2rem .8rem;
+//         text-align: center;
+//         vertical-align: middle;
+//     }
 
-    div.search-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+//     div.search-btn {
+//         width: 50px;
+//         height: 50px;
+//         border-radius: 50%;
 
-        i {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    }
-}
+//         i {
+//             top: 50%;
+//             left: 50%;
+//             transform: translate(-50%, -50%);
+//         }
+//     }
+// }
 
 @media screen and (max-width:600px) {
     div.search-contains {

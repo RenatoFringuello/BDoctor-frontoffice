@@ -9,25 +9,22 @@ export default {
     data() {
         return {
             store,
-            heigth: '1345px',
+            heigth: '1300px',
             marginButton: '0px',
             buttonTxt: 'View All'
         }
     },
     methods: {
         showMoreDoc() {
-            if (this.heigth == '1345px') {
+            if (this.heigth == '1300px') {
                 this.heigth = 'auto'
                 this.buttonTxt = 'Close'
                 this.marginButton = '0px'
-                console.log('open')
             } else {
-                this.heigth = '1345px'
+                this.heigth = '1300px'
                 this.buttonTxt = 'View All'
                 this.marginButton = '200px'
-                console.log('close')
             }
-            console.log('click')
         }
     },
     created() {
@@ -42,7 +39,6 @@ export default {
 
         <section id="best-doctor" class="py-5 position-relative">
             <h2 class="text-center text-uppercase fw-bold mt-5">Best Doctors</h2>
-            <!-- To do: Generare i vari campi e i vari medici in modo dinamico -->
 
             <div class="doctors-dropdown position-relative">
                 <SingleBestDoctors v-for="specialization in store.specializationList"
@@ -61,6 +57,10 @@ export default {
 
 section#best-doctor {
     background-color: white;
+
+    h2 {
+        font-size: 3rem;
+    }
 }
 
 div.doctors-dropdown {
