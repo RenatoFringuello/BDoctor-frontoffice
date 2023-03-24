@@ -14,7 +14,7 @@ export default {
 
     },
     created() {
-        this.store.getDataApi('doctors');
+        this.store.getDataApi('doctors', store.specializationSelected);
     },
 }
 </script>
@@ -24,19 +24,22 @@ export default {
         <section id="doctor-list">
 
             <!-- TO DO: REMOVE ALL v-if "doc.profile != null" AFTER FIX THE BUGS ON BACK-END -->
-            <div class="doctors-container">
-                <h1 class="pb-4 text-light">Med in New York</h1>
+            <div class="container-fluid">
+                <h1 class="pb-4 text-light"><span class="text-uppercase">{{ (store.specializationSelected != '') ?
+                    store.specializationSelected : 'All Doctors' }}</span> in New
+                    York</h1>
                 <div class="row">
-                    <div class="col-12 col-lg-2">
+                    <div class="col-12 col-xl-2 mb-5">
                         <!-- Import Side Bar -->
                         <DoctorsSideBar :results="store.doctorList.total" />
                     </div>
 
 
-                    <div class="doc-scroll col-12 col-lg-10">
+                    <div class="col-12 col-xl-10">
                         <div class="row g-4">
                             <!-- DOCTORS CARD -->
-                            <div class="col-12 col-lg-6" v-for="doc in store.doctorList.data">
+                            <div class="col-12 col-lg-6" v-for="doc in store.doctorList.data"
+                                v-if="store.doctorList.total > 0">
                                 <div class="doctor-card">
                                     <div class="doctor-card-head d-flex align-items-center position-relative">
                                         <img v-if="doc.profile != null && doc.profile.picture.startsWith('placeholder')"
@@ -64,6 +67,8 @@ export default {
                                     </div>
                                 </div>
                             </div>
+
+                            <p v-else class="text-white fs-3 text-center">No results</p>
                             <!-- END DOCTORS CARD -->
                         </div>
                     </div>

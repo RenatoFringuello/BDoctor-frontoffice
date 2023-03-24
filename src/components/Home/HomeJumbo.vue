@@ -30,15 +30,18 @@ export default {
             <div class="search-bar mt-5 d-flex align-items-center">
                 <div class="search-contains w-100">
                     <span class="align-middle">Search a</span>
-                    <select name="search" id="search">
+                    <select name="search" id="search" v-model="store.specializationSelected">
+                        <option value="" selected>All Doctors</option>
                         <option v-for="specilization in store.specializationList" :value="specilization.name">
                             {{ specilization.name.toUpperCase() }}</option>
                     </select>
                     <span class="align-middle">in<span class="fw-bold">New York</span>
                     </span>
-                    <div class="btn btn-primary doc-btn search-btn position-relative">
-                        <i class="fa-solid fa-magnifying-glass position-absolute"></i>
-                    </div>
+                    <router-link :to="'doctors-search'" v-if="store.specializationList.length > 1">
+                        <div class="btn btn-primary doc-btn search-btn position-relative">
+                            <i class="fa-solid fa-magnifying-glass position-absolute"></i>
+                        </div>
+                    </router-link>
                 </div>
             </div>
         </div>

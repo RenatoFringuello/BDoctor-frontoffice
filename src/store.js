@@ -22,10 +22,15 @@ export const store = reactive({
     dataraw: [],
     specializationList: [],
     doctorList: [],
+    specializationSelected: '',
 
 
     getDataApi(location, params = { params: {} }, apiUri = 'http://127.0.0.1:8000/api/') {
-        axios.get(apiUri + location, params)
+        axios.get(apiUri + location, {
+            params: {
+                specializations: params
+            }
+        })
             .then((response) => {
                 store.dataraw = response.data.results;
                 // console.log(store.dataraw); //To remove
@@ -45,5 +50,5 @@ export const store = reactive({
                         break;
                 }
             });
-    }
+    },
 });
