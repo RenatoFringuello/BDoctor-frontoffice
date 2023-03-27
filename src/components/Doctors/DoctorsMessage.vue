@@ -53,27 +53,29 @@ export default {
                 <label for="name" class="col-md-4">
                     Name
                 </label>
-                <input v-model="name" id="name" type="text" class="form-control" name="telephone" autocomplete="name">
+                <input v-model="name" id="name" type="text" class="form-control" name="telephone" autocomplete="name"
+                    required minlength="2" maxlength="255">
             </div>
             <div class="col-md-6">
                 <label for="lastname" class="col-md-4">
                     Lastname
                 </label>
                 <input v-model="lastname" id="lastname" type="text" class="form-control" name="lastname"
-                    autocomplete="lastname">
+                    autocomplete="lastname" required minlength="2" maxlength="255">
             </div>
             <div class="col-md-6">
-                <label for="email" class="col-md-4">
+                <label for="email" class="col-md-4" required minlength="2" maxlength="255">
                     Email
                 </label>
                 <input v-model="email" id="email" type="email" class="form-control" name="email" autocomplete="email"
-                    autofocus minlength="9">
+                    autofocus minlength="9" required maxlength="255">
             </div>
             <div class="col-md-6">
                 <label for="content" class="form-label">
                     Content
                 </label>
-                <textarea v-model="content" class="form-control" name="content" id="content" rows="3"></textarea>
+                <textarea v-model="content" class="form-control" name="content" id="content" rows="3" required
+                    minlength="10" maxlength="1000"></textarea>
             </div>
         </div>
         <button type="submit" class="btn btn-primary" @click="sendMessageForm()">Send Message</button>
