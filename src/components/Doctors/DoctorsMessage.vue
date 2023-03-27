@@ -1,38 +1,82 @@
 <script>
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+
+
 export default {
-    name: 'DoctorsMessage'
+    name: 'DoctorsMessage',
+    data() {
+        return {
+            name: '',
+            lastname: '',
+            email: '',
+            content: '',
+            success: false,
+            errors: {},
+            route: useRoute() //For get ID
+
+        }
+    },
+    methods: {
+        sendMessageForm() {
+            const formData = {
+                user_id: this.route.params.id,
+                name: this.name,
+                lastname: this.lastname,
+                email: this.email,
+                content: this.content
+            }
+
+            axios.post('http://127.0.0.1:8000/api/message', formData)
+                .then((response) => {
+                    this.success = response.data.success;
+                    if (this.success) {
+                        this.user_id = '',
+                            this.name = '',
+                            this.lastname = '',
+                            this.email = '',
+                            this.content = '',
+                            this.success = false
+                    } else {
+                        this.errors = response.data.errors;
+                        console.log(this.errors)
+                    }
+                })
+        }
+    },
 }
 </script>
 <template>
-    <form>
+    <section id="form-review">
         <div class="mb-4 row">
             <div class="col-md-6">
                 <label for="name" class="col-md-4">
                     Name
                 </label>
-                <input id="name" type="text" class="form-control" name="telephone" autocomplete="name">
+                <input v-model="name" id="name" type="text" class="form-control" name="telephone" autocomplete="name">
             </div>
             <div class="col-md-6">
                 <label for="lastname" class="col-md-4">
                     Lastname
                 </label>
-                <input id="lastname" type="text" class="form-control" name="lastname" autocomplete="lastname">
+                <input v-model="lastname" id="lastname" type="text" class="form-control" name="lastname"
+                    autocomplete="lastname">
             </div>
             <div class="col-md-6">
                 <label for="email" class="col-md-4">
                     Email
                 </label>
-                <input id="email" type="email" class="form-control" name="email" autocomplete="email" autofocus
-                    minlength="9">
+                <input v-model="email" id="email" type="email" class="form-control" name="email" autocomplete="email"
+                    autofocus minlength="9">
             </div>
             <div class="col-md-6">
                 <label for="content" class="form-label">
                     Content
                 </label>
-                <textarea class="form-control" name="content" id="content" rows="3"></textarea>
+                <textarea v-model="content" class="form-control" name="content" id="content" rows="3"></textarea>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
+        <button type="submit" class="btn btn-primary" @click="sendMessageForm()">Send Message</button>
+    </section>
 </template>
 <style lang="scss" scoped></style>
