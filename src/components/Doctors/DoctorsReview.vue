@@ -13,12 +13,11 @@ export default {
             rating: '',
             success: false,
             errors: {},
-            route: useRoute()
+            route: useRoute() //For get ID
         }
     },
     methods: {
         sendReviewForm() {
-            const route = useRoute();
             const formData = {
                 user_id: this.route.params.id,
                 email: this.email,
