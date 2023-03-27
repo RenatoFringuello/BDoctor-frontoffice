@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import AppHome from './pages/AppHome.vue';
 import AppDoctors from './pages/AppDoctors.vue';
+import AppSingleDoctor from './pages/AppSingleDoctor.vue';
+
 
 const router = createRouter({
 
@@ -16,6 +18,11 @@ const router = createRouter({
             path: '/doctors-search',
             name: 'doctors',
             component: AppDoctors
+        },
+        {
+            path: '/doctor/:id',
+            name: 'doctor-page',
+            component: AppSingleDoctor
         },
     ]
 });
