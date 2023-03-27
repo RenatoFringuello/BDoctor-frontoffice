@@ -12,25 +12,25 @@ export default {
             content: '',
             rating: '',
             success: false,
-            errors: {
-            }
+            errors: {},
+            route: useRoute()
         }
     },
     methods: {
         sendReviewForm() {
             const route = useRoute();
             const formData = {
-                user_id: 1,
+                user_id: this.route.params.id,
                 email: this.email,
                 name: this.name,
                 lastname: this.lastname,
                 content: this.content,
                 rating: this.rating,
             }
+            console.log(formData)
             axios.post('http://127.0.0.1:8000/api/review', formData)
                 .then((response) => {
                     this.success = response.data.success;
-                    console.log(this.success)
                     if (this.success) {
                         this.user_id = '',
                             this.email = '',
@@ -41,6 +41,7 @@ export default {
                             this.success = false
                     } else {
                         this.errors = response.data.errors;
+                        console.log(this.errors)
                     }
                 })
 
@@ -81,7 +82,7 @@ export default {
             <label for="lastname" class="col-md-4">
                 Rating from 0 to 10
             </label>
-            <input v-model="rating" id="rating" type="text" class="form-control" name="rating" autocomplete="rating">
+            <input v-model="rating" id="rating" type="number" class="form-control" name="rating" autocomplete="rating">
         </div>
     </div>
     <button @click="sendReviewForm()" class="btn btn-primary">Send Review</button>
