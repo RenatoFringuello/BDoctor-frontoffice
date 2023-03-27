@@ -22,7 +22,7 @@ const router = createRouter({
         {
             path: '/doctor/:id',
             name: 'doctor-page',
-            component: AppSingleDoctor
+            component: AppSingleDoctor,
         },
     ]
 });

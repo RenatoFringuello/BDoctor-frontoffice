@@ -1,3 +1,5 @@
+@import './variables';
+
 // Button
 .doc-btn {
     color: white !important;
@@ -145,5 +147,19 @@ div.search-contains {
         &:focus+.checkbox__symbol {
             box-shadow: 0 0 0 0.25em $main-doc-color-33opacity;
         }
+    }
+
+    /* inputs and textareas */
+    input,
+    textarea {
+        border: 2px solid $main-doc-color !important;
+        width: 100%;
+    }
+
+    input:focus,
+    textarea:focus {
+        border: 2px solid $main-doc-color !important;
+        box-shadow: $main-doc-color 0px 6px 12px -2px, #ffffff4d 0px 3px 7px -3px !important;
+        outline: none !important;
     }
 }

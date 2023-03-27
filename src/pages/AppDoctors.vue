@@ -46,7 +46,9 @@ export default {
                                             :src="`http://127.0.0.1:8000/storage/${doc.profile.picture}`"
                                             :alt="doc.profile.picture">
                                         <img v-else-if="doc.profile != null" :src="doc.profile.picture">
-                                        <router-link :to="{ name: 'doctor-page', params: { id: doc.id } }">
+                                        <!-- Go to single doctor page -->
+                                        <router-link :to="{ name: 'doctor-page', params: { id: doc.id } }"
+                                            @click="store.singleDocClicked = doc">
                                             <h3 class="ms-4">Dr. {{ doc.name + ' ' + doc.lastname }}</h3>
                                         </router-link>
                                         <span class="text-warning fs-4 mb-2 ms-1 position-absolute top-0 end-0"

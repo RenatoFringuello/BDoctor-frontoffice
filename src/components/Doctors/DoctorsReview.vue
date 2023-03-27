@@ -53,7 +53,7 @@ export default {
     <section id="review">
 
         <div class="mb-4 row">
-            <div class="col-md-6">
+            <div class="col-12">
                 <label for="email" class="col-md-4">
                     Email
                 </label>
@@ -61,7 +61,7 @@ export default {
                     :class="(this.errors.email) ? 'is-invalid' : ''">
                 <span v-if="this.errors.email" class="text-danger">{{ errors.email[0] }}</span>
             </div>
-            <div class="col-md-6">
+            <div class="col-12">
                 <label for="name" class="col-md-4">
                     Name
                 </label>
@@ -69,7 +69,7 @@ export default {
                     :class="(this.errors.name) ? 'is-invalid' : ''">
                 <span v-if="this.errors.name" class="text-danger">{{ errors.name[0] }}</span>
             </div>
-            <div class="col-md-6">
+            <div class="col-12">
                 <label for="lastname" class="col-md-4">
                     Lastname
                 </label>
@@ -77,7 +77,7 @@ export default {
                     autocomplete="lastname" :class="(this.errors.lastname) ? 'is-invalid' : ''">
                 <span v-if="this.errors.lastname" class="text-danger">{{ errors.lastname[0] }}</span>
             </div>
-            <div class="col-md-6">
+            <div class="col-12">
                 <label for="content" class="form-label">
                     Content
                 </label>
@@ -85,8 +85,8 @@ export default {
                     :class="(this.errors.content) ? 'is-invalid' : ''"></textarea>
                 <span v-if="this.errors.content" class="text-danger">{{ errors.content[0] }}</span>
             </div>
-            <div class="col-md-6">
-                <label for="lastname" class="col-md-4">
+            <div class="col-12">
+                <label for="lastname" class="form-label">
                     Rating from 0 to 10
                 </label>
                 <input v-model="rating" id="rating" type="number" class="form-control" name="rating" autocomplete="rating"
@@ -94,8 +94,25 @@ export default {
                 <span v-if="this.errors.rating" class="text-danger">{{ errors.rating[0] }}</span>
             </div>
         </div>
-        <button @click="sendReviewForm()" class="btn btn-primary">Send Review</button>
+        <button @click="sendReviewForm()" class="btn btn-primary doc-btn mt-3">Send Review</button>
 
     </section>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../../styles/partials/variables' as *;
+
+/* inputs and textareas */
+input,
+textarea {
+    border: 2px solid $main-doc-color !important;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus {
+    border: 2px solid $main-doc-color !important;
+    box-shadow: $main-doc-color 0px 6px 12px -2px, #ffffff4d 0px 3px 7px -3px !important;
+    outline: none !important;
+}
+</style>

@@ -23,7 +23,7 @@ export const store = reactive({
     specializationList: [],
     doctorList: [],
     specializationSelected: '',
-
+    singleDoctor: [],
 
     getDataApi(location, params = { params: {} }, apiUri = 'http://127.0.0.1:8000/api/') {
         axios.get(apiUri + location, {

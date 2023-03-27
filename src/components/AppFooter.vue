@@ -97,7 +97,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@use '../styles/partials/variables' as *;
+@use '../styles/general.scss' as *;
 
 footer {
     background-color: $main-doc-color;
@@ -151,13 +151,6 @@ section#top-footer {
             }
         }
     }
-}
-
-div.separator {
-    width: 100%;
-    height: 1.5px;
-    margin: 0 auto;
-    background: black;
 }
 
 .box-lime {
