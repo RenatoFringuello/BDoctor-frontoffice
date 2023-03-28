@@ -64,7 +64,7 @@ export default {
                 </label>
                 <input v-model="lastname" id="lastname" type="text" class="form-control" name="lastname"
                     autocomplete="lastname" :class="(this.errors.lastname) ? 'is-invalid' : ''">
-                <span v-if="this.errors.name" class="text-danger">{{ errors.lastname[0] }}</span>
+                <span v-if="this.errors.lastname" class="text-danger">{{ errors.lastname[0] }}</span>
 
             </div>
             <div class="col-12">
