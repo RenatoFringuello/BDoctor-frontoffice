@@ -25,15 +25,18 @@ export const store = reactive({
     specializationSelected: '',
     singleDoctor: [],
 
-    getDataApi(location, params = { params: {} }, apiUri = 'http://127.0.0.1:8000/api/') {
+    getDataApi(location, specializations, filterAvg, filterCount, apiUri = 'http://127.0.0.1:8000/api/') {
         axios.get(apiUri + location, {
             params: {
-                specializations: params
+                specializations: specializations,
+                sortByAvg: filterAvg,
+                //sortByCount: filterCount TO DO: FIX
             }
         })
             .then((response) => {
                 store.dataraw = response.data.results;
                 // console.log(store.dataraw); //To remove
+                console.log(this.filterReview)
             })
             .catch(function (error) {
                 console.log(error);
