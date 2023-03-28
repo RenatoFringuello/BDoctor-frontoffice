@@ -31,7 +31,7 @@ export default {
                 <div class="search-contains w-100">
                     <span class="align-middle">Search a</span>
                     <select name="search" id="search" v-model="store.specializationSelected">
-                        <option value="" selected>All Doctors</option>
+                        <option value="" disabled selected> -- Select -- </option>
                         <option v-for="specilization in store.specializationList" :value="specilization.name">
                             {{ specilization.name.toUpperCase() }}</option>
                     </select>

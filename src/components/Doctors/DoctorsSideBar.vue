@@ -18,6 +18,7 @@ export default {
     },
     created() {
         this.store.getDataApi('specializations');
+        this.specializationSelected = this.store.specializationSelected;
     }
 }
 </script>
@@ -28,9 +29,9 @@ export default {
         <h2>Search:</h2>
         <div class="search-contains w-100">
             <select name="search" id="search" v-model="specializationSelected">
-                <option value="" selected>All Doctors</option>
-                <option v-for=" specilization in store.specializationList" :value="specilization.name">
-                    {{ specilization.name.toUpperCase() }}</option>
+                <option value="" disabled> -- Select -- </option>
+                <option v-for="specialization in store.specializationList" :value="specialization.name" selected>
+                    {{ specialization.name.toUpperCase() }}</option>
             </select>
             <div class="btn btn-primary doc-btn search-btn position-relative ms-2" @click="reSearch()">
                 <i class="fa-solid fa-magnifying-glass position-absolute"></i>
