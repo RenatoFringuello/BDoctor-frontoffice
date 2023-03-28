@@ -1,7 +1,7 @@
 <script>
 import { store } from '../store';
 import { useRoute } from 'vue-router';
-import axios from 'axios';
+import axios, { all } from 'axios';
 
 
 
@@ -33,7 +33,7 @@ export default {
                 .catch(function (error) {
                     console.log(error);
                 })
-        }
+        },
     },
     created() {
         this.getSingleDoctor();
@@ -65,9 +65,12 @@ export default {
                                         }} - </span>
                                 </p>
                                 <div class="star-review mt-2">
-                                    <!-- TO DO: Create dinamic star with API -->
-                                    <i class="fa-solid fa-star fs-3 me-1 text-warning" v-for="n in 3"></i>
-                                    <span>(10)</span>
+                                    <!-- Generate stars -->
+                                    <div class="d-flex align-items-center">
+                                        <div v-for="star in store.getStars(doctorData.reviews_avg_rating)" class="star"
+                                            :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
+                                        <span>({{ doctorData.reviews_avg_rating / 2 }})</span>
+                                    </div>
                                 </div>
 
 
@@ -124,12 +127,34 @@ export default {
 
                     <div class="separator my-5 w-50"></div>
 
-                    <section id="review">
+                    <section id="review" class="mb-5">
                         <h2 class="text-center text-uppercase">
                             <i class="fa-solid fa-star"></i>
                             <span class="mx-3">Reviews</span>
                             <i class="fa-solid fa-star"></i>
                         </h2>
+
+                        <div class="row g-3 mt-5">
+                            <!-- Generate Reviews -->
+                            <div class="col-12" v-for="review in doctorData.reviews">
+
+                                <div class="review-box border p-2">
+                                    <h3>
+                                        {{ review.name }} {{ review.lastname }}
+                                    </h3>
+                                    <pre class="fw-bold">{{ review.email }}</pre>
+                                    <!-- Generate stars -->
+                                    <div class="d-flex mb-3">
+                                        <div v-for="star in store.getStars(review.rating)" class="star"
+                                            :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
+                                        <span>({{ review.rating / 2 }})</span>
+                                    </div>
+                                    <p>
+                                        {{ review.content }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </section>
                 </div>
 
