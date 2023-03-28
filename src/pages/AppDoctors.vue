@@ -112,5 +112,20 @@ div.doctor-card {
         border-radius: 50%;
         border: 2px solid $main-doc-color;
     }
+
+    a {
+        color: black;
+        text-decoration: none;
+
+        h3 {
+            border-bottom: 2px solid transparent;
+            transition: all .2s;
+
+            &:hover {
+                border-bottom: 2px solid black;
+            }
+        }
+
+    }
 }
 </style>
