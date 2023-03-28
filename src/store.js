@@ -54,4 +54,29 @@ export const store = reactive({
                 }
             });
     },
+
+    // Create stars review
+    getStars(vote) {
+        vote /= 2;
+        const stars = [];
+        for (let i = 0; i < 5; i++) {
+            if (vote < 0.8) {
+                //not full active
+                if (vote >= 0.3) {
+                    // 100% half
+                    stars.push(0.5);
+                }
+                else {
+                    // 100% disabled
+                    stars.push(0);
+                }
+            }
+            else {
+                //100% active
+                stars.push(1);
+            }
+            vote--;
+        }
+        return stars;
+    },
 });

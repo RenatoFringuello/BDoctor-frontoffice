@@ -46,15 +46,26 @@ export default {
                                             :src="`http://127.0.0.1:8000/storage/${doc.profile.picture}`"
                                             :alt="doc.profile.picture">
                                         <img v-else-if="doc.profile != null" :src="doc.profile.picture">
-                                        <!-- Go to single doctor page -->
-                                        <router-link :to="{ name: 'doctor-page', params: { id: doc.id } }"
-                                            @click="store.singleDocClicked = doc">
-                                            <h3 class="ms-4">Dr. {{ doc.name + ' ' + doc.lastname }}</h3>
-                                        </router-link>
-                                        <span class="text-warning fs-4 mb-2 ms-1 position-absolute top-0 end-0"
-                                            v-if="doc.sponsors != null && doc.sponsors[0].type != 'noSponsor'">FEATURED
-                                        </span>
+                                        <div class="doctor info">
+
+                                            <!-- Go to single doctor page -->
+                                            <router-link :to="{ name: 'doctor-page', params: { id: doc.id } }"
+                                                @click="store.singleDocClicked = doc">
+                                                <h3 class="ms-4">Dr. {{ doc.name + ' ' + doc.lastname }}</h3>
+                                            </router-link>
+                                            <span class="text-warning fs-4 mb-2 ms-1 position-absolute top-0 end-0"
+                                                v-if="doc.sponsors != null && doc.sponsors[0].type != 'noSponsor'">FEATURED
+                                            </span>
+
+                                            <!-- Generate stars -->
+                                            <div class="d-flex ms-3 m-2">
+                                                <div v-for="star in store.getStars(doc.reviews_avg_rating)" class="star"
+                                                    :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
+                                                <span>({{ doc.reviews_count }})</span>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <!-- Contact -->
                                     <div class="doctor-card-body mt-3">
                                         <p v-if="doc.profile != null">
                                             {{ doc.profile.services.substring(0, 130) + '...' }}
@@ -127,5 +138,24 @@ div.doctor-card {
         }
 
     }
+
+    //star
+    .star {
+        width: 25px;
+        height: 25px;
+        clip-path: polygon(50% 0%, 64% 33%, 98% 35%, 72% 57%, 79% 91%, 50% 70%, 21% 91%, 28% 57%, 2% 35%, 37% 33%);
+        // background: $star-active;
+        background: orange;
+        margin-right: .25rem;
+
+        &.half {
+            background: linear-gradient(90deg, orange 0%, orange 50%, black 50%, black 100%);
+        }
+
+        &.disabled {
+            background: black;
+        }
+    }
+
 }
 </style>
