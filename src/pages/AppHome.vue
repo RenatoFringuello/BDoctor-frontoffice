@@ -1,11 +1,11 @@
 <script>
 import { store } from '../store';
 import HomeJumbo from '../components/Home/HomeJumbo.vue';
-import SingleBestDoctors from '../components/Home/SingleBestDoctors.vue';
+import FeaturedSingleDoctor from '../components/Home/FeaturedSingleDoctor.vue';
 
 export default {
     name: 'AppHome',
-    components: { HomeJumbo, SingleBestDoctors },
+    components: { HomeJumbo, FeaturedSingleDoctor },
     data() {
         return {
             store,
@@ -38,10 +38,10 @@ export default {
         <HomeJumbo />
 
         <section id="best-doctor" class="py-5 position-relative">
-            <h2 class="text-center text-uppercase fw-bold mt-5">Best Doctors</h2>
+            <h2 class="text-center text-uppercase fw-bold mt-5">Featured Doctors</h2>
 
             <div class="doctors-dropdown position-relative">
-                <SingleBestDoctors v-for="specialization in store.specializationList"
+                <FeaturedSingleDoctor v-for="specialization in store.specializationList"
                     :title="specialization.name.charAt(0).toUpperCase().substring() + specialization.name.slice(1)" />
             </div>
             <div class="more-doctors position-absolute bottom-0 start-0 w-100 d-flex">
