@@ -14,7 +14,6 @@ export default {
     },
     methods: {
         reSearch() {
-            console.clear();
             this.store.specializationSelected = this.specializationSelected;
             this.store.getDataApi('doctors', this.store.specializationSelected, this.sortByAvg, this.sortByCount);
         },
@@ -47,11 +46,11 @@ export default {
             <h2>Order By:</h2>
             <!-- Order by Svg -->
             <input type="checkbox" id="review" v-model="sortByAvg" @click="store.getDataApi('doctors', store.specializationSelected, !sortByAvg, sortByCount)">
-            <label for="review" class="ms-2">Review . {{ sortByAvg }}</label>
+            <label for="review" class="ms-2">Best doctors</label>
             <br>
             <!-- Order by Count (on click send the opposite value of the checkbox, because it change the value after the api call)-->
             <input type="checkbox" id="review-count" v-model="sortByCount" @click="store.getDataApi('doctors', store.specializationSelected, sortByAvg, !sortByCount)">
-            <label for="review-count" class="ms-2">Number of review . {{ sortByCount }}</label>
+            <label for="review-count" class="ms-2">Number of reviews</label>
         </div>
     </section>
 </template>
