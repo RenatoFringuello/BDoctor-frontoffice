@@ -29,8 +29,8 @@ export const store = reactive({
         axios.get(apiUri + location, {
             params: {
                 specializations: specializations,
-                sortByAvg: (filterAvg) ? '1' : '0',
-                sortByCount: (filterCount) ? '1' : '0'
+                sortByAvg: (filterAvg) ? 1 : 0,
+                sortByCount: (filterCount) ? 1 : 0,
             }
         })
             .then((response) => {

@@ -8,13 +8,13 @@ export default {
         return {
             store,
             specializationSelected: '',
-            checkedNames: '',
             sortByAvg: false,
             sortByCount: false,
         }
     },
     methods: {
         reSearch() {
+            console.clear();
             this.store.specializationSelected = this.specializationSelected;
             this.store.getDataApi('doctors', this.store.specializationSelected, this.sortByAvg, this.sortByCount);
         },
@@ -46,12 +46,12 @@ export default {
 
             <h2>Order By:</h2>
             <!-- Order by Svg -->
-            <input type="checkbox" id="review" v-model="sortByAvg" @click="reSearch()">
-            <label for="review" class="ms-2">Review</label>
+            <input type="checkbox" id="review" v-model="sortByAvg" @click="store.getDataApi('doctors', store.specializationSelected, !sortByAvg, sortByCount)">
+            <label for="review" class="ms-2">Review . {{ sortByAvg }}</label>
             <br>
-            <!-- Order by Count TO DO FIX -->
-            <input type="checkbox" id="review-count" v-model="sortByCount" @click="reSearch()">
-            <label for="review-count" class="ms-2">Number of review - {{ sortByCount }}</label>
+            <!-- Order by Count -->
+            <input type="checkbox" id="review-count" v-model="sortByCount" @click="store.getDataApi('doctors', store.specializationSelected, sortByAvg, !sortByCount)">
+            <label for="review-count" class="ms-2">Number of review . {{ sortByCount }}</label>
         </div>
     </section>
 </template>
