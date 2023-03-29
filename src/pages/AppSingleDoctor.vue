@@ -28,7 +28,7 @@ export default {
             })
                 .then((response) => {
                     this.doctorData = response.data.results;
-                    console.log(response.data.results); //To remove
+                    // console.log(response.data.results); //To remove
                 })
                 .catch(function (error) {
                     console.log(error);

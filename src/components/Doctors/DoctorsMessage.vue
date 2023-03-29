@@ -18,7 +18,8 @@ export default {
         }
     },
     methods: {
-        sendMessageForm() {
+        sendMessageForm(e) {
+            e.preventDefault();
             const formData = {
                 name: this.name,
                 lastname: this.lastname,
@@ -37,7 +38,8 @@ export default {
                             this.lastname = '',
                             this.email = '',
                             this.content = '',
-                            this.success = false
+                            this.success = false,
+                            this.errors = {}
                     } else {
                         this.errors = response.data.errors;
                         console.log(this.errors)
@@ -49,44 +51,48 @@ export default {
 </script>
 <template>
     <section id="form-message">
-        <div class="mb-4 row">
-            <div class="col-12">
-                <label for="name" class="col-md-4">
-                    Name
-                </label>
-                <input v-model="name" id="name" type="text" class="form-control" name="telephone" autocomplete="name"
-                    :class="(this.errors.name) ? 'is-invalid' : ''">
-                <span v-if="this.errors.name" class="text-danger">{{ errors.name[0] }}</span>
-            </div>
-            <div class="col-12">
-                <label for="lastname" class="col-md-4">
-                    Lastname
-                </label>
-                <input v-model="lastname" id="lastname" type="text" class="form-control" name="lastname"
-                    autocomplete="lastname" :class="(this.errors.lastname) ? 'is-invalid' : ''">
-                <span v-if="this.errors.lastname" class="text-danger">{{ errors.lastname[0] }}</span>
+        <form @submit.prevent="sendMessageForm" method="POST">
+            <div class="mb-4 row">
+                <div class="col-12">
+                    <label for="name" class="col-md-4">
+                        Name
+                    </label>
+                    <input v-model="name" id="name" type="text" class="form-control" name="telephone" autocomplete="name"
+                        :class="(this.errors.name) ? 'is-invalid' : ''" required minlength="2" maxlength="255">
+                    <span v-if="this.errors.name" class="text-danger">{{ errors.name[0] }}</span>
+                </div>
+                <div class="col-12">
+                    <label for="lastname" class="col-md-4">
+                        Lastname
+                    </label>
+                    <input v-model="lastname" id="lastname" type="text" class="form-control" name="lastname"
+                        autocomplete="lastname" :class="(this.errors.lastname) ? 'is-invalid' : ''" required minlength="2"
+                        maxlength="255">
+                    <span v-if="this.errors.lastname" class="text-danger">{{ errors.lastname[0] }}</span>
 
-            </div>
-            <div class="col-12">
-                <label for="email" class="col-md-4">
-                    Email
-                </label>
-                <input v-model="email" id="email" type="email" class="form-control" name="email" autocomplete="email"
-                    autofocus :class="(this.errors.email) ? 'is-invalid' : ''">
-                <span v-if="this.errors.email" class="text-danger">{{ errors.email[0] }}</span>
+                </div>
+                <div class="col-12">
+                    <label for="email" class="col-md-4">
+                        Email
+                    </label>
+                    <input v-model="email" id="email" type="email" class="form-control" name="email" autocomplete="email"
+                        autofocus :class="(this.errors.email) ? 'is-invalid' : ''" required minlength="2" maxlength="255">
+                    <span v-if="this.errors.email" class="text-danger">{{ errors.email[0] }}</span>
 
-            </div>
-            <div class="col-12">
-                <label for="content" class="form-label">
-                    Content
-                </label>
-                <textarea v-model="content" class="form-control w-100" name="content" id="content" rows="3"
-                    :class="(this.errors.content) ? 'is-invalid' : ''"></textarea>
-                <span v-if="this.errors.content" class="text-danger">{{ errors.content[0] }}</span>
+                </div>
+                <div class="col-12">
+                    <label for="content" class="form-label">
+                        Content
+                    </label>
+                    <textarea v-model="content" class="form-control w-100" name="content" id="content" rows="3"
+                        :class="(this.errors.content) ? 'is-invalid' : ''" required minlength="2"
+                        maxlength="1500"></textarea>
+                    <span v-if="this.errors.content" class="text-danger">{{ errors.content[0] }}</span>
 
+                </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-primary doc-btn mt-3" @click="sendMessageForm()">Send Message</button>
+            <button type="submit" class="btn btn-primary doc-btn mt-3" @click="sendMessageForm()">Send Message</button>
+        </form>
     </section>
 </template>
 <style lang="scss" scoped>
