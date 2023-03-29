@@ -1,6 +1,7 @@
 <script>
 import { useRoute } from 'vue-router';
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 
 export default {
@@ -18,6 +19,34 @@ export default {
         }
     },
     methods: {
+        showAlert() {
+            // Use sweetalert2
+            let timerInterval
+            Swal.fire({
+                title: 'Message has been sent!',
+                icon: 'success',
+                // html: 'I will close in <b></b> milliseconds.',
+                footer: '<pre>You will receive an answer soon, let\'s check your email box</pre>',
+                timer: 2000,
+                timerProgressBar: false,
+                didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
+            })
+        },
+
         sendMessageForm(e) {
             e.preventDefault();
             const formData = {
@@ -33,7 +62,8 @@ export default {
                 .then((response) => {
                     this.success = response.data.success;
                     if (this.success) {
-                        this.user_id = '',
+                        this.showAlert(),
+                            this.user_id = '',
                             this.name = '',
                             this.lastname = '',
                             this.email = '',
