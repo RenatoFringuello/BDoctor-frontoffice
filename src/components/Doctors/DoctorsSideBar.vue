@@ -10,27 +10,14 @@ export default {
             specializationSelected: '',
             checkedNames: '',
             sortByAvg: false,
-            // sortByCount: false,
+            sortByCount: false,
         }
     },
     methods: {
         reSearch() {
-            this.sortByAvg = 0;
-            this.sortByCount = 0;
             this.store.specializationSelected = this.specializationSelected;
-            this.store.getDataApi('doctors', this.store.specializationSelected, this.sortByAvg);
+            this.store.getDataApi('doctors', this.store.specializationSelected, this.sortByAvg, this.sortByCount);
         },
-
-        setApiFilters() {
-            let getAvg;
-            if (!this.sortByAvg) {
-                getAvg = '1'
-            } else {
-                getAvg = '0'
-            }
-
-            this.store.getDataApi('doctors', this.store.specializationSelected, getAvg);
-        }
     },
     created() {
         this.store.getDataApi('specializations');
@@ -59,12 +46,12 @@ export default {
 
             <h2>Order By:</h2>
             <!-- Order by Svg -->
-            <input type="checkbox" id="review" v-model="sortByAvg" @click="setApiFilters()">
+            <input type="checkbox" id="review" v-model="sortByAvg" @click="reSearch()">
             <label for="review" class="ms-2">Review</label>
             <br>
             <!-- Order by Count TO DO FIX -->
-            <!-- <input type="checkbox" id="review-count" value="1" v-model="sortByCount" @click="setApiFilters()">
-                            <label for="review-count" class="ms-2">Number of review - {{ sortByCount }}</label> -->
+            <input type="checkbox" id="review-count" v-model="sortByCount" @click="reSearch()">
+            <label for="review-count" class="ms-2">Number of review - {{ sortByCount }}</label>
         </div>
     </section>
 </template>

@@ -29,14 +29,14 @@ export const store = reactive({
         axios.get(apiUri + location, {
             params: {
                 specializations: specializations,
-                sortByAvg: filterAvg,
-                //sortByCount: filterCount TO DO: FIX
+                sortByAvg: (filterAvg) ? '1' : '0',
+                sortByCount: (filterCount) ? '1' : '0'
             }
         })
             .then((response) => {
                 store.dataraw = response.data.results;
-                // console.log(store.dataraw); //To remove
-                console.log(this.filterReview)
+                console.log(store.dataraw); //To remove
+                // console.log(this.filterReview)
             })
             .catch(function (error) {
                 console.log(error);
