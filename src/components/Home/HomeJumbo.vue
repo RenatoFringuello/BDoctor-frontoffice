@@ -1,21 +1,19 @@
 <script>
-import { store } from '../../store.js';
+import { store } from '../../store';
 
 export default {
     name: 'HomeJumbo',
+    props:{
+        specializationList : Array
+    },
     data() {
         return {
             store,
-            // specializationsApiUrl: 'http://127.0.0.1:8000/api/specializations',
-            // specializationsList: '',
         }
     },
     methods: {
 
-    },
-    created() {
-        this.store.getDataApi('specializations');
-    },
+    }
 }
 </script>
 
@@ -32,12 +30,12 @@ export default {
                     <span class="align-middle">Search a</span>
                     <select name="search" id="search" v-model="store.specializationSelected">
                         <option value="" disabled selected> -- Select -- </option>
-                        <option v-for="specilization in store.specializationList" :value="specilization.name">
+                        <option v-for="specilization in specializationList" :value="specilization.name">
                             {{ specilization.name.toUpperCase() }}</option>
                     </select>
                     <span class="align-middle">in<span class="fw-bold">New York</span>
                     </span>
-                    <router-link :to="'doctors-search'" v-if="store.specializationList.length > 1">
+                    <router-link :to="'doctors-search'" v-if="specializationList.length > 1">
                         <div class="btn btn-primary doc-btn search-btn position-relative">
                             <i class="fa-solid fa-magnifying-glass position-absolute"></i>
                         </div>

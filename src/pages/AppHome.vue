@@ -35,7 +35,7 @@ export default {
 
 <template>
     <main>
-        <HomeJumbo />
+        <HomeJumbo :specializationList="store.specializationList"/>
 
         <section id="best-doctor" class="py-5 position-relative">
             <h2 class="text-center text-uppercase fw-bold mt-5">Featured Doctors</h2>
