@@ -49,7 +49,7 @@ export default {
             <input type="checkbox" id="review" v-model="sortByAvg" @click="store.getDataApi('doctors', store.specializationSelected, !sortByAvg, sortByCount)">
             <label for="review" class="ms-2">Review . {{ sortByAvg }}</label>
             <br>
-            <!-- Order by Count -->
+            <!-- Order by Count (on click send the opposite value of the checkbox, because it change the value after the api call)-->
             <input type="checkbox" id="review-count" v-model="sortByCount" @click="store.getDataApi('doctors', store.specializationSelected, sortByAvg, !sortByCount)">
             <label for="review-count" class="ms-2">Number of review . {{ sortByCount }}</label>
         </div>
