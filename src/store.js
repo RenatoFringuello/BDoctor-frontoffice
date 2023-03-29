@@ -35,8 +35,7 @@ export const store = reactive({
         })
             .then((response) => {
                 store.dataraw = response.data.results;
-                console.log(store.dataraw); //To remove
-                // console.log(this.filterReview)
+                console.log(store.dataraw); 
             })
             .catch(function (error) {
                 console.log(error);
