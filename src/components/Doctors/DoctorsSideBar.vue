@@ -43,14 +43,37 @@ export default {
         <!-- Filters -->
         <div class="my-4">
 
-            <h2>Order By:</h2>
+            <h2 class="mb-3">Order By:</h2>
             <!-- Order by Svg -->
-            <input type="checkbox" id="review" v-model="sortByAvg" @click="store.getDataApi('doctors', store.specializationSelected, !sortByAvg, sortByCount)">
-            <label for="review" class="ms-2">Best doctors</label>
-            <br>
+            <div class="checkbox-wrapper-33 mb-2">
+
+                <label for="review" class="ms-2 checkbox">
+                    <input type="checkbox" class="checkbox__trigger visuallyhidden" id="review" v-model="sortByAvg"
+                        @click="store.getDataApi('doctors', store.specializationSelected, !sortByAvg, sortByCount)">
+                    <span class="checkbox__symbol">
+                        <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28"
+                            version="1" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 14l8 7L24 7"></path>
+                        </svg>
+                    </span>
+                    <p class="checkbox__textwrapper">Best doctors</p>
+                </label>
+            </div>
             <!-- Order by Count (on click send the opposite value of the checkbox, because it change the value after the api call)-->
-            <input type="checkbox" id="review-count" v-model="sortByCount" @click="store.getDataApi('doctors', store.specializationSelected, sortByAvg, !sortByCount)">
-            <label for="review-count" class="ms-2">Number of reviews</label>
+            <div class="checkbox-wrapper-33">
+                <label for="review-count" class="ms-2 checkbox">
+
+                    <input type="checkbox" class="checkbox__trigger visuallyhidden" id="review-count" v-model="sortByCount"
+                        @click="store.getDataApi('doctors', store.specializationSelected, sortByAvg, !sortByCount)">
+                    <span class="checkbox__symbol">
+                        <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28"
+                            version="1" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 14l8 7L24 7"></path>
+                        </svg>
+                    </span>
+                    <p class="checkbox__textwrapper">Number of reviews</p>
+                </label>
+            </div>
         </div>
     </section>
 </template>
