@@ -69,7 +69,7 @@ export default {
                                     <div class="d-flex align-items-center">
                                         <div v-for="star in store.getStars(doctorData.reviews_avg_rating)" class="star"
                                             :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
-                                        <span>({{ doctorData.reviews_avg_rating / 2 }})</span>
+                                        <span>({{ doctorData.reviews_count / 2 }})</span>
                                     </div>
                                 </div>
 
