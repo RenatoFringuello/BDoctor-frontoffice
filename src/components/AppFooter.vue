@@ -40,7 +40,10 @@ export default {
 </script>
 
 <template>
-    <footer>
+    <footer class="position-relative">
+        <div class="wave-shape">
+            <img :src="store.getImgPath('bottom-shape', 'png')" alt="">
+        </div>
         <div class="container h-100">
 
             <!-- Top footer -->
@@ -106,6 +109,13 @@ footer {
         padding: 3rem 0;
     }
 }
+
+div.wave-shape img {
+    width: 100%;
+    height: 50px;
+    transform: translateY(-100%);
+}
+
 
 section#top-footer {
     img {
