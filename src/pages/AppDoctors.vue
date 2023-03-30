@@ -39,9 +39,9 @@ export default {
 
             <!-- TO DO: REMOVE ALL v-if "doc.profile != null" AFTER FIX THE BUGS ON BACK-END -->
             <div class="container-fluid">
-                <h1 class="pb-4 text-light"><span class="text-uppercase">{{ (store.specializationSelected != '') ?
-                    store.specializationSelected : 'All Doctors' }}</span> in New
-                    York</h1>
+                <h1 class="pb-4 text-light"><span class="text-uppercase fw-bold">{{ (store.specializationSelected
+                    != '') ?
+                    store.specializationSelected : 'No Specilization Selected' }}</span></h1>
                 <div class="row">
                     <div class="col-12 col-xl-2 mb-5">
                         <!-- Import Side Bar -->

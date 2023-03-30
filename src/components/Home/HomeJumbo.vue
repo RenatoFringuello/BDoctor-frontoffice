@@ -33,7 +33,7 @@ export default {
                         <option v-for="specilization in specializationList" :value="specilization.name">
                             {{ specilization.name.toUpperCase() }}</option>
                     </select>
-                    <span class="align-middle">in<span class="fw-bold">New York</span>
+                    <span class="align-middle">in<span class="fw-bold">Milan</span>
                     </span>
                     <router-link :to="'doctors-search'" v-if="specializationList.length > 1">
                         <div class="btn btn-primary doc-btn search-btn position-relative">
