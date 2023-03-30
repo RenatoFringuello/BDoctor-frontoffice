@@ -9,10 +9,23 @@ export default {
     data() {
         return {
             store,
+            page: 1
         }
     },
     methods: {
+        prevPage() {
+            if (this.store.doctorList.prev_page_url) {
+                this.page--
+            }
+            this.store.getDataApi('doctors', store.specializationSelected, false, false, this.page)
+        },
 
+        nextPage() {
+            if (this.store.doctorList.next_page_url) {
+                this.page++
+            }
+            this.store.getDataApi('doctors', store.specializationSelected, false, false, this.page)
+        }
     },
     created() {
         this.store.getDataApi('doctors', store.specializationSelected);
@@ -35,7 +48,6 @@ export default {
                         <DoctorsSideBar :results="store.doctorList.total" />
                     </div>
 
-
                     <div class="col-12 col-xl-10">
                         <div class="row g-4">
                             <!-- DOCTORS CARD -->
@@ -47,6 +59,28 @@ export default {
 
                             <p v-else class="text-white fs-3 text-center">No results</p>
                             <!-- END DOCTORS CARD -->
+
+                            <!-- Slider -->
+                            <nav aria-label="Page navigation example" class="d-flex justify-content-center"
+                                v-if="store.doctorList.total > 0">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <button class="page-link" @click="prevPage()" aria-label="Prev">
+                                            <span aria-hidden="true" class="fs-3"
+                                                :class="(!store.doctorList.prev_page_url) ? 'pagination-disable' : 'fw-bold'">&laquo;</span>
+                                        </button>
+                                    </li>
+                                    <li class="page-item"><span class="page-link fs-3 px-3">{{ store.doctorList.current_page
+                                    }}</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" @click="nextPage()" aria-label="Next">
+                                            <span aria-hidden=" true" class="fs-3"
+                                                :class="(!store.doctorList.next_page_url) ? 'pagination-disable' : 'fw-bold'">&raquo;</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -102,5 +136,10 @@ div.doctor-card {
 
     }
 
+
+}
+
+.pagination-disable {
+    color: gray;
 }
 </style>

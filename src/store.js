@@ -26,10 +26,11 @@ export const store = reactive({
     singleDoctor: [],
     doctorSponsored: [],
 
-    getDataApi(location, specializations, filterAvg, filterCount, apiUri = 'http://127.0.0.1:8000/api/') {
+    getDataApi(location, specializations, filterAvg, filterCount, page = 1, apiUri = 'http://127.0.0.1:8000/api/') {
         axios.get(apiUri + location, {
             params: {
                 specializations: specializations,
+                page: page,
                 sortByAvg: (filterAvg) ? 1 : 0,
                 sortByCount: (filterCount) ? 1 : 0,
             }
