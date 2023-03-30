@@ -3,8 +3,8 @@ import { store } from '../../store';
 
 export default {
     name: 'HomeJumbo',
-    props:{
-        specializationList : Array
+    props: {
+        specializationList: Array
     },
     data() {
         return {
@@ -20,7 +20,7 @@ export default {
 <template>
     <section id="jumbo" class="d-flex position-relative">
         <img :src="store.getImgPath('doctors-jumbo2', 'png')" alt="Doctors"
-            class="d-none d-md-block position-absolute bottom-0 end-0">
+            class="d-none d-lg-block position-absolute bottom-0 end-0">
         <div class="container m-auto jumbo-area">
             <h1 class="text-uppercase text-light fw-bold">Find a doctor now!</h1>
             <p class="text-uppercase">Search among 200.000 doctors.</p>
@@ -84,38 +84,25 @@ div.jumbo-area {
     }
 }
 
-// div.search-contains {
-//     span {
-//         font-size: 1.5rem;
-//         margin: 0 .5rem;
-//         text-transform: uppercase;
-//     }
+@media screen and (max-width:1546px) {
+    section#jumbo {
 
-//     select {
-//         width: 150px;
-//         height: 40px;
-//         border: 0;
-//         outline: none;
-//         background-color: white;
-//         border: 1px solid $light-doc-color;
-//         border-radius: 2rem;
-//         padding: .2rem .8rem;
-//         text-align: center;
-//         vertical-align: middle;
-//     }
+        img {
+            width: 600px;
+            margin-right: 50px;
+        }
+    }
+}
 
-//     div.search-btn {
-//         width: 50px;
-//         height: 50px;
-//         border-radius: 50%;
+@media screen and (max-width:1335px) {
+    section#jumbo {
 
-//         i {
-//             top: 50%;
-//             left: 50%;
-//             transform: translate(-50%, -50%);
-//         }
-//     }
-// }
+        img {
+            width: 500px;
+            margin-right: 10px;
+        }
+    }
+}
 
 @media screen and (max-width:600px) {
     div.search-contains {
