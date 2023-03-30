@@ -24,6 +24,7 @@ export const store = reactive({
     doctorList: [],
     specializationSelected: '',
     singleDoctor: [],
+    doctorSponsored: [],
 
     getDataApi(location, specializations, filterAvg, filterCount, apiUri = 'http://127.0.0.1:8000/api/') {
         axios.get(apiUri + location, {
@@ -35,7 +36,7 @@ export const store = reactive({
         })
             .then((response) => {
                 store.dataraw = response.data.results;
-                console.log(store.dataraw); 
+                console.log(store.dataraw);
             })
             .catch(function (error) {
                 console.log(error);
@@ -49,6 +50,9 @@ export const store = reactive({
 
                     case 'doctors':
                         store.doctorList = this.dataraw;
+                        break;
+                    case 'sponsored':
+                        store.doctorSponsored = this.dataraw;
                         break;
                 }
             });

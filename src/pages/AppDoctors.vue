@@ -1,10 +1,11 @@
 <script>
 import { store } from '../store';
 import DoctorsSideBar from '../components/Doctors/DoctorsSideBar.vue';
+import DoctorCard from '../components/Doctors/DoctorCard.vue';
 
 export default {
     name: 'AppDoctor',
-    components: { DoctorsSideBar },
+    components: { DoctorsSideBar, DoctorCard },
     data() {
         return {
             store,
@@ -40,46 +41,8 @@ export default {
                             <!-- DOCTORS CARD -->
                             <div class="col-12 col-lg-6" v-for="doc in store.doctorList.data"
                                 v-if="store.doctorList.total > 0">
-                                <div class="doctor-card">
-                                    <div class="doctor-card-head d-flex align-items-center position-relative">
-                                        <img v-if="doc.profile != null && doc.profile.picture.startsWith('placeholder')"
-                                            :src="`http://127.0.0.1:8000/storage/${doc.profile.picture}`"
-                                            :alt="doc.profile.picture">
-                                        <img v-else-if="doc.profile != null" :src="doc.profile.picture">
-                                        <div class="doctor info">
-
-                                            <!-- Go to single doctor page -->
-                                            <router-link :to="{ name: 'doctor-page', params: { id: doc.id } }"
-                                                @click="store.singleDocClicked = doc">
-                                                <h3 class="ms-4">Dr. {{ doc.name + ' ' + doc.lastname }}</h3>
-                                            </router-link>
-                                            <span class="text-warning fs-4 mb-2 ms-1 position-absolute top-0 end-0"
-                                                v-if="doc.sponsors != null && doc.sponsors[0].type != 'noSponsor'">FEATURED
-                                            </span>
-
-                                            <!-- Generate stars -->
-                                            <div class="d-flex ms-3 m-2">
-                                                <div v-for="star in store.getStars(doc.reviews_avg_rating)" class="star"
-                                                    :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
-                                                <span>({{ doc.reviews_count }})</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Contact -->
-                                    <div class="doctor-card-body mt-3">
-                                        <p v-if="doc.profile != null">
-                                            {{ doc.profile.services.substring(0, 130) + '...' }}
-                                        </p>
-                                        <span v-if="doc.profile != null" class="text-uppercase me-3">
-                                            <i class="fa-solid fa-location-dot"></i>
-                                            {{ doc.profile.address }}
-                                        </span>
-                                        <span v-if="doc.profile != null" class="text-uppercase">
-                                            <i class="fa-solid fa-phone"></i>
-                                            {{ doc.profile.telephone }}
-                                        </span>
-                                    </div>
-                                </div>
+                                <!-- Import Doctor Card -->
+                                <DoctorCard :doc="doc" />
                             </div>
 
                             <p v-else class="text-white fs-3 text-center">No results</p>
