@@ -41,7 +41,7 @@ export default {
 }
 </script>
 <template>
-    <main class="py-5">
+    <main>
         <div class="container">
             <div class="row g-3">
                 <!-- Info Doctor -->
