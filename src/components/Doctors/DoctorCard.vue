@@ -84,5 +84,12 @@ div.doctor-card {
 
     }
 
+
+}
+
+@media screen and (max-width: 480px) {
+    div.doctor-card {
+        padding: 1.2rem .9rem;
+    }
 }
 </style>
