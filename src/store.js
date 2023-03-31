@@ -11,6 +11,15 @@ export const store = reactive({
     getImgPath(imgPath, type) {
         return new URL(`./assets/images/${imgPath}.${type}`, import.meta.url).href;
     },
+
+    /**
+ * 
+ * @param {*} imgPath - must be a string
+ * @returns 
+ */
+    getNewsImgPath(imgPath, type) {
+        return new URL(`./assets/images/talk-loghi/${imgPath}.${type}`, import.meta.url).href;
+    },
     /**
      * 
      * @returns DateTime luxon
