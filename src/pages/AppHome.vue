@@ -2,10 +2,13 @@
 import { store } from '../store';
 import HomeJumbo from '../components/Home/HomeJumbo.vue';
 import FeaturedDoctor from '../components/Home/FeaturedDoctors.vue';
+import HomeWhyBdoc from '../components/Home/HomeWhyBdoc.vue';
+import HomeTalkAboutUs from '../components/Home/HomeTalkAboutUs.vue';
+
 
 export default {
     name: 'AppHome',
-    components: { HomeJumbo, FeaturedDoctor },
+    components: { HomeJumbo, FeaturedDoctor, HomeWhyBdoc, HomeTalkAboutUs },
     data() {
         return {
             store,
@@ -43,8 +46,9 @@ export default {
     <main>
         <HomeJumbo :specializationList="store.specializationList" />
 
+        <!-- Featured Doctor Section -->
         <section id="best-doctor" class="py-5 position-relative">
-            <h2 class="text-center text-uppercase fw-bold mt-5">Featured Doctors</h2>
+            <h2 class="section-title mt-5">Featured Doctors</h2>
 
             <div class="doctors-dropdown position-relative">
                 <FeaturedDoctor />
@@ -54,6 +58,11 @@ export default {
             </div>
         </section>
 
+        <!--Why BDoctor Section -->
+        <HomeWhyBdoc />
+
+        <!-- THEY TALK ABOUT US Section -->
+        <HomeTalkAboutUs />
     </main>
 </template>
 
@@ -62,10 +71,6 @@ export default {
 
 section#best-doctor {
     background-color: white;
-
-    h2 {
-        font-size: 3rem;
-    }
 }
 
 div.doctors-dropdown {
