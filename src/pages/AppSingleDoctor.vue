@@ -41,9 +41,9 @@ export default {
 }
 </script>
 <template>
-    <main>
+    <main class="pt-3 pb-5">
         <div class="container">
-            <div class="row g-3">
+            <div class="row gx-3">
                 <!-- Info Doctor -->
                 <div class="col-12 col-lg-8 box-elements">
                     <section id="doctor-info">
