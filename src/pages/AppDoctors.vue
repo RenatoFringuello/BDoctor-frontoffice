@@ -16,6 +16,9 @@ export default {
         prevPage() {
             if (this.store.doctorList.prev_page_url) {
                 this.page--
+                if (!this.store.doctorList.last_page == this.page) {
+                    this.page++
+                }
             }
             this.store.getDataApi('doctors', store.specializationSelected, false, false, this.page)
         },
@@ -23,6 +26,9 @@ export default {
         nextPage() {
             if (this.store.doctorList.next_page_url) {
                 this.page++
+                if (this.store.doctorList.last_page != this.page) {
+                    this.page--
+                }
             }
             this.store.getDataApi('doctors', store.specializationSelected, false, false, this.page)
         }

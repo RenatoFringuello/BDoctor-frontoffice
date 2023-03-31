@@ -15,7 +15,7 @@ export default {
     methods: {
         reSearch() {
             this.store.specializationSelected = this.specializationSelected;
-            this.store.getDataApi('doctors', this.store.specializationSelected, this.sortByAvg, this.sortByCount);
+            this.store.getDataApi('doctors', this.store.specializationSelected, this.sortByAvg, this.sortByCount, 1);
         },
     },
     created() {
@@ -49,7 +49,7 @@ export default {
 
                 <label for="review" class="ms-2 checkbox">
                     <input type="checkbox" class="checkbox__trigger visuallyhidden" id="review" v-model="sortByAvg"
-                        @click="store.getDataApi('doctors', store.specializationSelected, !sortByAvg, sortByCount)">
+                        @click="store.getDataApi('doctors', store.specializationSelected, !sortByAvg, sortByCount, 1)">
                     <span class="checkbox__symbol">
                         <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28"
                             version="1" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@ export default {
                 <label for="review-count" class="ms-2 checkbox">
 
                     <input type="checkbox" class="checkbox__trigger visuallyhidden" id="review-count" v-model="sortByCount"
-                        @click="store.getDataApi('doctors', store.specializationSelected, sortByAvg, !sortByCount)">
+                        @click="store.getDataApi('doctors', store.specializationSelected, sortByAvg, !sortByCount, 1)">
                     <span class="checkbox__symbol">
                         <svg aria-hidden="true" class="icon-checkbox" width="28px" height="28px" viewBox="0 0 28 28"
                             version="1" xmlns="http://www.w3.org/2000/svg">
