@@ -23,7 +23,8 @@ export default {
             <div class="doctor info h-100 ms-3">
 
                 <!-- Go to single doctor page -->
-                <router-link class="ms-4" :to="{ name: 'doctor-page', params: { id: doc.id } }" @click="store.singleDocClicked = doc">
+                <router-link class="ms-4" :to="{ name: 'doctor-page', params: { id: doc.id } }"
+                    @click="store.singleDocClicked = doc">
                     <h3>Dr. {{ doc.name + ' ' + doc.lastname }}</h3>
                 </router-link>
 
@@ -60,12 +61,13 @@ div.doctor-card {
     border: 2px solid $main-doc-color;
     background-color: white;
 
-    .doctor-card-head{
+    .doctor-card-head {
         height: 120px;
+
         img {
             width: 120px;
             height: 120px;
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
             border-radius: 50%;
             border: 2px solid $main-doc-color;
