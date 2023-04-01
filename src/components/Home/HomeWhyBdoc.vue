@@ -28,7 +28,7 @@ export default {
         <div class="container">
             <div class="row py-5">
                 <h2 class="section-title">Why BDoctor?</h2>
-                <div class="row gy-4 gy-lg-0">
+                <div class="row gy-4 gy-lg-0 m-0">
                     <div class="col-12 col-lg-4" v-for="whyElement in whyList">
                         <div class="info-box d-flex justify-content-center align-items-center flex-column">
                             <h3 class="text-center mb-3">
