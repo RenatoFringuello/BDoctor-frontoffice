@@ -161,13 +161,6 @@ footer {
     }
 }
 
-div.wave-shape img {
-    width: 100%;
-    height: 50px;
-    transform: translateY(-100%);
-}
-
-
 section#top-footer {
     img {
         width: 100px;

@@ -64,7 +64,7 @@ export default {
                 </div>
             </div>
             <!-- info-cards -->
-            <div class="row g-4 mt-3" id="info-cards">
+            <div class="row g-4 my-5" id="info-cards">
                 <div class="col-12 col-md-6 col-xl-3" v-for="card in cards">
                     <div class="card rounded-4 p-3 h-100">
                         <h5 class="mb-4">
@@ -79,6 +79,9 @@ export default {
             </div>
         </div>
     </section>  
+    <div class="wave-shape bottom">
+        <img :src="store.getImgPath('bottom-shape', 'png')" alt="">
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -86,7 +89,7 @@ export default {
 
     section#info {
         background-color: white;
-        padding: 4rem;
+        padding: 4rem 0;
 
         .info-hero {
             overflow: hidden;
@@ -108,6 +111,15 @@ export default {
             p{
                 font-size: .9rem;
                 text-align: justify;
+            }
+        }
+
+    }
+    div.wave-shape{
+        &.bottom{
+            img{
+                filter: invert(47%) sepia(95%) saturate(409%) hue-rotate(137deg) brightness(94%) contrast(7%);
+                -webkit-filter: invert(47%) sepia(95%) saturate(409%) hue-rotate(137deg) brightness(94%) contrast(70%);
             }
         }
     }

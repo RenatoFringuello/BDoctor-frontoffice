@@ -18,6 +18,13 @@
     color:$main-doc-color;
 }
 
+//waves
+div.wave-shape img {
+    width: 100%;
+    height: 50px;
+    transform: translateY(-100%);
+}
+
 // Search Bar
 div.search-contains {
     span {
