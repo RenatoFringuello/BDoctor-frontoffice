@@ -49,12 +49,12 @@ export default {
                     != '') ?
                     store.specializationSelected : 'No Specilization Selected' }}</span></h1>
                 <div class="row">
-                    <div class="col-12 col-xl-2 mb-5">
+                    <div class="col-12 col-xl-3 col-xxl-2 mb-4">
                         <!-- Import Side Bar -->
                         <DoctorsSideBar :results="store.doctorList.total" />
                     </div>
 
-                    <div class="col-12 col-xl-10">
+                    <div class="col-12 col-xl-9 col-xxl-10">
                         <div class="row g-4">
                             <!-- DOCTORS CARD -->
                             <div class="col-12 col-lg-6" v-for="doc in store.doctorList.data"
