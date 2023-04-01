@@ -3,8 +3,6 @@ import { store } from '../store';
 import { useRoute } from 'vue-router';
 import axios, { all } from 'axios';
 
-
-
 import DoctorsReview from '../components/Doctors/DoctorsReview.vue';
 import DoctorsMessage from '../components/Doctors/DoctorsMessage.vue';
 
@@ -41,12 +39,12 @@ export default {
 }
 </script>
 <template>
-    <main class="pt-3 pb-5">
+    <div class="pt-3 pb-5">
         <div class="container">
-            <div class="row gx-3">
+            <div class="row g-3">
                 <!-- Info Doctor -->
-                <div class="col-12 col-lg-8 box-elements">
-                    <section id="doctor-info">
+                <div class="col-12 col-lg-8">
+                    <section id="doctor-info" class="card mb-3 p-3">
                         <div class="row">
                             <!-- Profile Pictures -->
                             <div class="col-12 col-xl-4">
@@ -72,10 +70,9 @@ export default {
                                         <span>({{ doctorData.reviews_count }})</span>
                                     </div>
                                 </div>
-
-
                             </div>
-
+                        </div>
+                        <div class="row">
                             <div class="separator my-5 w-50"></div>
 
                             <div class="col-12">
@@ -101,22 +98,16 @@ export default {
                                 </div>
 
                                 <!-- Bio -->
-                                <p class="border p-2">
-                                    <span class="fw-bold">Bio:</span>
-                                    <br>
-                                    <span v-if="doctorData.profile.bio">
-                                        {{ doctorData.profile.bio }}
-                                    </span>
+                                <p class="box rounded-2 p-2">
+                                    <div class="fw-bold mb-2">Bio:</div>
+                                    <span v-if="doctorData.profile.bio">{{ doctorData.profile.bio }}</span>
                                     <span v-else> - - - </span>
                                 </p>
 
                                 <!-- Services -->
-                                <p class="border p-2">
-                                    <span class="fw-bold">My services:</span>
-                                    <br>
-                                    <span v-if="doctorData.profile.services">
-                                        {{ doctorData.profile.services }}
-                                    </span>
+                                <p class="box rounded-2 p-2">
+                                    <div class="fw-bold mb-2">My services:</div>
+                                    <span v-if="doctorData.profile.services">{{ doctorData.profile.services }}</span>
                                     <span v-else> - - - </span>
 
                                 </p>
@@ -125,31 +116,28 @@ export default {
                         </div>
                     </section>
 
-                    <div class="separator my-5 w-50"></div>
+                    <!-- <div class="separator my-5 w-50"></div> -->
 
-                    <section id="review" class="mb-5">
-                        <h2 class="text-center text-uppercase">
-                            <i class="fa-solid fa-star"></i>
-                            <span class="mx-3">Reviews</span>
-                            <i class="fa-solid fa-star"></i>
+                    <section id="review" class="card pt-4 p-3">
+                        <h2 class="text-center text-uppercase mb-4">
+                            <i class="fa-solid star"></i>
+                            <span class="text-doctor mx-3">Reviews</span>
+                            <i class="fa-solid star"></i>
                         </h2>
-
-                        <div class="row g-3 mt-5">
+                        <div class="row g-3">
                             <!-- Generate Reviews -->
                             <div class="col-12" v-for="review in doctorData.reviews">
 
-                                <div class="review-box border p-2">
-                                    <h3>
-                                        {{ review.name }} {{ review.lastname }}
-                                    </h3>
-                                    <pre class="fw-bold">{{ review.email }}</pre>
+                                <div class="box rounded-2 p-2">
+                                    <h4 class="mb-2">{{ review.name }} {{ review.lastname }}</h4>
+                                    <pre class="fw-bold text-secondary mb-2">{{ review.email }}</pre>
                                     <!-- Generate stars -->
-                                    <div class="d-flex mb-3">
+                                    <div class="d-flex mb-2">
                                         <div v-for="star in store.getStars(review.rating)" class="star"
                                             :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
                                         <span>({{ review.rating / 2 }})</span>
                                     </div>
-                                    <p>
+                                    <p class="m-0">
                                         {{ review.content }}
                                     </p>
                                 </div>
@@ -160,12 +148,12 @@ export default {
 
                 <!-- Send Message or Review -->
                 <div class="col-12 col-lg-4">
-                    <div class="box-elements p-5">
+                    <div class="card p-5">
                         <div class="box-form">
                             <h3> Send Message</h3>
                             <DoctorsMessage />
                         </div>
-                        <hr>
+                        <hr class="my-5">
                         <div class="box-form">
                             <h3>Send Review</h3>
                             <DoctorsReview />
@@ -173,40 +161,25 @@ export default {
                     </div>
                 </div>
             </div>
-
         </div>
-
-    </main>
+    </div>
 </template>
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
 
-main {
-    min-height: 100vh;
-    background: $light-doc-color;
-    background: linear-gradient(0deg, $light-doc-color 0%, $light-doc-color 47%, $light-pro-color 99%, $light-pro-color 100%);
-}
-
-.box-elements {
-    background-color: white;
-}
-
-
-// BOX FORMS
-
 div.box-form {
-    margin-bottom: 5rem;
-
     h3 {
         margin-bottom: 1rem;
         text-align: center;
     }
 }
 
-section#doctor-info {
-    padding: 1rem;
-    margin-bottom: 150px;
 
+.box{
+    border: 2px solid $main-doc-color;
+}
+
+section#doctor-info {
     img {
         width: 280px;
         height: 280px;

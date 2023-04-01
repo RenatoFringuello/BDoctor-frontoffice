@@ -84,7 +84,7 @@ export default {
         <form @submit.prevent="sendMessageForm" method="POST">
             <div class="mb-4 row">
                 <div class="col-12">
-                    <label for="name" class="col-md-4">
+                    <label for="name">
                         Name
                     </label>
                     <input v-model="name" id="name" type="text" class="form-control" name="telephone" autocomplete="name"
@@ -92,7 +92,7 @@ export default {
                     <span v-if="this.errors.name" class="text-danger">{{ errors.name[0] }}</span>
                 </div>
                 <div class="col-12">
-                    <label for="lastname" class="col-md-4">
+                    <label for="lastname">
                         Lastname
                     </label>
                     <input v-model="lastname" id="lastname" type="text" class="form-control" name="lastname"
@@ -102,7 +102,7 @@ export default {
 
                 </div>
                 <div class="col-12">
-                    <label for="email" class="col-md-4">
+                    <label for="email">
                         Email
                     </label>
                     <input v-model="email" id="email" type="email" class="form-control" name="email" autocomplete="email"

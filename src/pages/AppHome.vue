@@ -4,11 +4,12 @@ import HomeJumbo from '../components/Home/HomeJumbo.vue';
 import FeaturedDoctor from '../components/Home/FeaturedDoctors.vue';
 import HomeWhyBdoc from '../components/Home/HomeWhyBdoc.vue';
 import HomeTalkAboutUs from '../components/Home/HomeTalkAboutUs.vue';
+import HomeInfo from '../components/Home/HomeInfo.vue';
 
 
 export default {
     name: 'AppHome',
-    components: { HomeJumbo, FeaturedDoctor, HomeWhyBdoc, HomeTalkAboutUs },
+    components: { HomeJumbo, FeaturedDoctor, HomeWhyBdoc, HomeTalkAboutUs, HomeInfo },
     data() {
         return {
             store,
@@ -43,12 +44,13 @@ export default {
 </script>
 
 <template>
-    <main>
         <HomeJumbo :specializationList="store.specializationList" />
+
+        <HomeInfo />
 
         <!-- Featured Doctor Section -->
         <section id="best-doctor" class="py-5 position-relative">
-            <h2 class="section-title mt-5">Featured Doctors</h2>
+            <h2 class="section-title text-white">Featured Doctors</h2>
 
             <div class="doctors-dropdown position-relative">
                 <FeaturedDoctor />
@@ -58,19 +60,19 @@ export default {
             </div>
         </section>
 
+        <!-- THEY TALK ABOUT US Section -->
+        <HomeTalkAboutUs />
+        
         <!--Why BDoctor Section -->
         <HomeWhyBdoc />
 
-        <!-- THEY TALK ABOUT US Section -->
-        <HomeTalkAboutUs />
-    </main>
 </template>
 
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
 
 section#best-doctor {
-    background-color: white;
+    background-color: #0000;
 }
 
 div.doctors-dropdown {

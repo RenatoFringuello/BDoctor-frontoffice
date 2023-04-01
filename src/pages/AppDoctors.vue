@@ -40,70 +40,61 @@ export default {
 </script>
 
 <template>
-    <main>
-        <section id="doctor-list">
+    <section id="doctor-list">
 
-            <!-- TO DO: REMOVE ALL v-if "doc.profile != null" AFTER FIX THE BUGS ON BACK-END -->
-            <div class="container-fluid">
-                <h1 class="pb-4 text-light"><span class="text-uppercase fw-bold">{{ (store.specializationSelected
-                    != '') ?
-                    store.specializationSelected : 'No Specilization Selected' }}</span></h1>
-                <div class="row">
-                    <div class="col-12 col-xl-3 col-xxl-2 mb-4">
-                        <!-- Import Side Bar -->
-                        <DoctorsSideBar :results="store.doctorList.total" />
-                    </div>
+        <!-- TO DO: REMOVE ALL v-if "doc.profile != null" AFTER FIX THE BUGS ON BACK-END -->
+        <div class="container-fluid">
+            <h1 class="pb-4 text-light"><span class="text-uppercase fw-bold">{{ (store.specializationSelected
+                != '') ?
+                store.specializationSelected : 'No Specilization Selected' }}</span></h1>
+            <div class="row">
+                <div class="col-12 col-xl-3 col-xxl-2 mb-4">
+                    <!-- Import Side Bar -->
+                    <DoctorsSideBar :results="store.doctorList.total" />
+                </div>
 
-                    <div class="col-12 col-xl-9 col-xxl-10">
-                        <div class="row g-4">
-                            <!-- DOCTORS CARD -->
-                            <div class="col-12 col-lg-6" v-for="doc in store.doctorList.data"
-                                v-if="store.doctorList.total > 0">
-                                <!-- Import Doctor Card -->
-                                <DoctorCard :doc="doc" />
-                            </div>
-
-                            <p v-else class="text-white fs-3 text-center">No results</p>
-                            <!-- END DOCTORS CARD -->
-
-                            <!-- Slider -->
-                            <nav aria-label="Page navigation example" class="d-flex justify-content-center"
-                                v-if="store.doctorList.total > 0">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <button class="page-link" @click="prevPage()" aria-label="Prev">
-                                            <span aria-hidden="true" class="fs-3"
-                                                :class="(!store.doctorList.prev_page_url) ? 'pagination-disable' : 'fw-bold'">&laquo;</span>
-                                        </button>
-                                    </li>
-                                    <li class="page-item"><span class="page-link fs-3 px-3">{{ store.doctorList.current_page
-                                    }}</span>
-                                    </li>
-                                    <li class="page-item">
-                                        <button class="page-link" @click="nextPage()" aria-label="Next">
-                                            <span aria-hidden=" true" class="fs-3"
-                                                :class="(!store.doctorList.next_page_url) ? 'pagination-disable' : 'fw-bold'">&raquo;</span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </nav>
+                <div class="col-12 col-xl-9 col-xxl-10">
+                    <div class="row g-4">
+                        <!-- DOCTORS CARD -->
+                        <div class="col-12 col-lg-6" v-for="doc in store.doctorList.data"
+                            v-if="store.doctorList.total > 0">
+                            <!-- Import Doctor Card -->
+                            <DoctorCard :doc="doc" />
                         </div>
+
+                        <p v-else class="text-white fs-3 text-center">No results</p>
+                        <!-- END DOCTORS CARD -->
+
+                        <!-- Slider -->
+                        <nav aria-label="Page navigation example" class="d-flex justify-content-center"
+                            v-if="store.doctorList.total > 0">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <button class="page-link" @click="prevPage()" aria-label="Prev">
+                                        <span aria-hidden="true" class="fs-3"
+                                            :class="(!store.doctorList.prev_page_url) ? 'pagination-disable' : 'fw-bold'">&laquo;</span>
+                                    </button>
+                                </li>
+                                <li class="page-item"><span class="page-link fs-3 px-3">{{ store.doctorList.current_page
+                                }}</span>
+                                </li>
+                                <li class="page-item">
+                                    <button class="page-link" @click="nextPage()" aria-label="Next">
+                                        <span aria-hidden=" true" class="fs-3"
+                                            :class="(!store.doctorList.next_page_url) ? 'pagination-disable' : 'fw-bold'">&raquo;</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 </template>
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables' as *;
-
-main {
-    min-height: 100vh;
-    // background-color: #edeff2;
-    background: $light-doc-color;
-    background: linear-gradient(0deg, $light-doc-color 0%, $light-doc-color 47%, $light-pro-color 99%, $light-pro-color 100%);
-}
 
 section#doctor-list {
     padding: 50px 0;
