@@ -23,15 +23,66 @@ export default {
             footerMenu: [
                 {
                     title: 'Team 6',
-                    list: ['Alessio De Angelis', 'Roberto Carta Mantiglia', 'Renato Fringuello', 'Claudio Emmolo']
+                    list: [
+                        {
+                            name : 'Alessio De Angelis',
+                            href : 'https://github.com/DeAngelisDev16'
+                        }, 
+                        {
+                            name : 'Roberto Carta Mantiglia',
+                            href : 'https://github.com/RobertoCartaMantiglia'
+                        }, 
+                        {
+                            name : 'Renato Fringuello',
+                            href : 'https://github.com/RenatoFringuello'
+                        }, 
+                        {
+                            name : 'Claudio Emmolo',
+                            href : 'https://github.com/Claudio-Emmolo'
+                        }
+                    ]
                 },
                 {
                     title: 'Bool Teach',
-                    list: ['Riccardo Petricca', 'Luigi Micco', 'Stefano Cappellini']
+                    list: [
+                        {
+                            name : 'Riccardo Petricca',
+                            href : '#'
+                        },
+                        {
+                            name : 'Luigi Micco',
+                            href : 'https://github.com/luigimicco'
+                        },
+                        {
+                            name : 'Stefano Cappellini',
+                            href : 'https://github.com/StefanoCappellini'
+                        }
+                    ]
                 },
                 {
                     title: 'Policy',
-                    list: ['Notes', 'Policy', 'Cookies', 'Help', 'Teams']
+                    list: [
+                        {
+                            name : 'Notes',
+                            href : '#'
+                        },
+                        {
+                            name : 'Policy',
+                            href : '#'
+                        },
+                        {
+                            name : 'Cookies',
+                            href : '#'
+                        },
+                        {
+                            name : 'Help',
+                            href : '#'
+                        },
+                        {
+                            name : 'Teams',
+                            href : '#'
+                        },
+                    ]
                 },
             ]
         }
@@ -65,8 +116,8 @@ export default {
                                     <h4>{{ menu.title }}</h4>
                                     <ul>
                                         <li v-for="list in menu.list">
-                                            <a href="#">
-                                                {{ list }}
+                                            <a :href="list.href">
+                                                {{ list.name }}
                                             </a>
                                         </li>
                                     </ul>
