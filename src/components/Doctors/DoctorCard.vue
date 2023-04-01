@@ -59,7 +59,7 @@ div.doctor-card {
     min-height: 300px;
     border-radius: 2rem;
     padding: 2rem;
-    border: 1px solid $main-doc-color;
+    border: 2px solid $main-doc-color;
     background-color: white;
 
     img {
