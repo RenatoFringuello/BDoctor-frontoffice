@@ -34,7 +34,7 @@ export default {
                     </select>
                     <span class="align-middle">in<span class="fw-bold">Milan</span>
                     </span>
-                    <router-link class="text-decoration-none" :to="'doctors-search'" v-if="specializationList.length > 1">
+                    <router-link class="text-decoration-none" :to="'doctors-search'" v-if="specializationList.length > 1 && store.specializationSelected != ''">
                         <div class="btn doc-btn search-btn d-flex" @click="reSearch()">
                             <div class="d-flex align-items-center m-auto">
                                 <i class="fa-solid fa-magnifying-glass"></i>

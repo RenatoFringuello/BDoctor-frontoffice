@@ -33,7 +33,7 @@ export default {
 </script>
 
 <template>
-    <section id="talk-about-us">
+    <section id="talk-about-us" class="bg-white">
         <div class="container-fluid">
             <div class="row">
                 <h2 class="section-title">They talk about us</h2>
@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 section#talk-about-us {
-    margin: 100px 0;
+    padding: 100px 0;
 }
 
 div.scroll-news {

@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-    <section id="cardiology" class="my-5">
+    <section id="featured" class="my-5">
         <div class="container">
             <div class="row g-3">
                 <div class="col-12 col-lg-6" v-for="docSponsored in store.doctorSponsored">
@@ -34,12 +34,4 @@ export default {
 <style lang="scss" scoped>
 @use '../../styles/partials/variables' as *;
 
-
-// h3 {
-//     font-weight: 200;
-// }
-
-// .row {
-//     overflow-x: auto;
-// }
 </style>

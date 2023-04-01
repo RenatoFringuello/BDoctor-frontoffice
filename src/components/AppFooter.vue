@@ -47,7 +47,7 @@ export default {
                     list: [
                         {
                             name : 'Riccardo Petricca',
-                            href : '#'
+                            href : 'https://github.com/rc2pc2'
                         },
                         {
                             name : 'Luigi Micco',
