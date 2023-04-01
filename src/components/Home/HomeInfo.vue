@@ -53,7 +53,7 @@ export default {
     <section id="info">
         <div class="container">
             <!-- info-hero -->
-            <div class="row g-0 rounded-5 overflow-hidden mb-5" :class="hero.dir" v-for="hero in heroes">
+            <div class="row g-0 rounded-5 overflow-hidden mb-5 card-shadow" :class="hero.dir" v-for="hero in heroes">
                 <div class="col-12 col-md-7 info-hero">
                     <img :src="store.getImgPath(hero.imgName, hero.imgExt)">
                 </div>
@@ -66,7 +66,7 @@ export default {
             <!-- info-cards -->
             <div class="row g-4 my-5" id="info-cards">
                 <div class="col-12 col-md-6 col-xl-3" v-for="card in cards">
-                    <div class="card rounded-4 p-3 h-100">
+                    <div class="card card-shadow rounded-4 p-3 h-100">
                         <h5 class="mb-4">
                             <i :class="card.icon" class="me-2 text-doctor"></i>
                             {{ card.title }}
