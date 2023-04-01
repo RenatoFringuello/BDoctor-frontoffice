@@ -49,7 +49,7 @@ export default {
         <HomeInfo />
 
         <!-- Featured Doctor Section -->
-        <section id="best-doctor" class="py-5 position-relative">
+        <section id="best-doctor" class="py-5 position-relative bg-main-gradient">
             <h2 class="section-title text-white">Featured Doctors</h2>
 
             <div class="doctors-dropdown position-relative">
@@ -70,9 +70,10 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
+// @use '../styles/partials/variables' as *;
 
 section#best-doctor {
-    background-color: #0000;
+    background-color: $light-pro-color;
 }
 
 div.doctors-dropdown {
@@ -88,7 +89,7 @@ div.more-doctors {
     width: 100%;
     height: v-bind(size);
     background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 32%, rgba(255, 255, 255, 0.865983893557423) 65%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, #ffffff 32%, #ffffffdd 65%, #ffffff00 100%);
     margin-top: v-bind(marginButton);
 
     button {
