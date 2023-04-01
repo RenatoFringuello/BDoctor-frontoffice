@@ -30,7 +30,7 @@ export default {
                 <h2 class="section-title">Why BDoctor?</h2>
                 <div class="row gy-4 gy-lg-0 m-0">
                     <div class="col-12 col-lg-4" v-for="whyElement in whyList">
-                        <div class="info-box d-flex justify-content-center align-items-center flex-column">
+                        <div class="info-box card-shadow d-flex justify-content-center align-items-center flex-column">
                             <h3 class="text-center mb-3">
                                 {{ whyElement.title }}
                             </h3>

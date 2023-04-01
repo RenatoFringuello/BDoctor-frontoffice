@@ -24,7 +24,7 @@ export default {
         <div class="container m-auto jumbo-area">
             <h1 class="text-uppercase text-light fw-bold">Find a doctor now!</h1>
             <p class="text-uppercase">Search among 200.000 doctors.</p>
-            <div class="search-bar mt-5 d-flex align-items-center">
+            <div class="search-bar mt-5 d-flex align-items-center card-shadow">
                 <div class="search-contains d-flex align-items-center w-100">
                     <span class="align-middle">Search a</span>
                     <select name="search" id="search" v-model="store.specializationSelected">
