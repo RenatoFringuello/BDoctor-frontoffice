@@ -39,6 +39,7 @@ export default {
                             </p>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </section>
