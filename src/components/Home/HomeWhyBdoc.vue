@@ -26,7 +26,7 @@ export default {
 <template>
     <section id="why-bdoc">
         <div class="container">
-            <div class="row py-5">
+            <div class="row gy-4 gy-lg-0 py-5">
                 <h2 class="section-title">Why BDoctor?</h2>
                 <div class="row gy-4 gy-lg-0 m-0">
                     <div class="col-12 col-lg-4" v-for="whyElement in whyList">
@@ -39,8 +39,6 @@ export default {
                             </p>
                         </div>
                     </div>
-
-                </div>
             </div>
         </div>
     </section>

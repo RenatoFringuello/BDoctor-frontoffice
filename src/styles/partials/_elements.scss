@@ -23,7 +23,7 @@ div.search-contains {
 
     select {
         width: 150px;
-        height: 40px;
+        height: $search-btn-l;
         border: 0;
         outline: none;
         background-color: white;
@@ -35,15 +35,10 @@ div.search-contains {
     }
 
     div.search-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-
-        i {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+        width:  $search-btn-l;
+        height: $search-btn-l;
+        border-radius: 3rem;
+        padding: 0;
     }
 }
 
