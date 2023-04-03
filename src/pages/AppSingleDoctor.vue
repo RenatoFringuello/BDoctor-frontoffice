@@ -94,6 +94,13 @@ export default {
                                             <i class="fa-solid fa-location-dot me-3"></i>
                                             <span>{{ doctorData.profile.address }}</span>
                                         </li>
+                                        <li>
+                                            <!-- da modificare -->
+                                            <a :href="`/doctor/${doctorData.id}/cv.pdf`" class="btn doc-btn">
+                                                <i class="fa-solid fa-file-arrow-down me-3"></i>
+                                                <span>Download CV</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
 
