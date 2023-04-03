@@ -12,7 +12,7 @@ export default {
 }
 </script>
 <template>
-    <div class="doctor-card p-4 rounded-5 position-relative d-flex flex-column justify-content-between">
+    <div class="doctor-card p-4 rounded-5 position-relative d-flex flex-column justify-content-between h-100">
         <span class="text-warning fs-5 mb-2 ms-1 position-absolute top-0 end-0 me-3 mt-1"
             v-if="doc.sponsors != null && doc.sponsors[0].type != 'noSponsor'">FEATURED
         </span>
