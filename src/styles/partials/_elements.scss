@@ -27,6 +27,10 @@
     color:$main-doc-color;
 }
 
+.bg-main-gradient{
+    background: linear-gradient(0deg, $light-doc-color 0%, $light-doc-color 47%, $light-pro-color 99%, $light-pro-color 100%);
+}
+
 //waves
 div.wave-shape img {
     width: 100%;

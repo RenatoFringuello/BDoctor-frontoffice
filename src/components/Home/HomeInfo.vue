@@ -117,9 +117,11 @@ export default {
     }
     div.wave-shape{
         &.bottom{
+            background-color: $light-pro-color;
             img{
-                filter: invert(47%) sepia(95%) saturate(409%) hue-rotate(137deg) brightness(94%) contrast(7%);
-                -webkit-filter: invert(47%) sepia(95%) saturate(409%) hue-rotate(137deg) brightness(94%) contrast(70%);
+                filter: invert(37%) sepia(105%) saturate(6370%) hue-rotate(181deg) brightness(87%) contrast(86%);
+                -webkit-filter: invert(37%) sepia(105%) saturate(6370%) hue-rotate(181deg) brightness(87%) contrast(86%);
+                // -webkit-filter: invert(37%) sepia(105%) saturate(6370%) hue-rotate(181deg) brightness(83.5%) contrast(90.5%);
             }
         }
     }
