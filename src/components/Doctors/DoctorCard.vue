@@ -12,15 +12,22 @@ export default {
 }
 </script>
 <template>
-    <div class="doctor-card p-4 rounded-5 position-relative d-flex flex-column justify-content-between h-100">
-        <span class="text-warning fs-5 mb-2 ms-1 position-absolute top-0 end-0 me-3 mt-1"
+    <div class="doctor-card p-4 rounded-5 position-relative d-flex flex-column justify-content-between h-100"
+        :class="(doc.sponsors != null && doc.sponsors[0].type != 'noSponsor') ? 'pro-doctor-card' : ''">
+
+        <span class="fs-5 mb-2 ms-1 position-absolute top-0 end-0 me-3"
             v-if="doc.sponsors != null && doc.sponsors[0].type != 'noSponsor'">
-            <div class="sponsored-icon position-absolute top-0 end-0 mt-2">
-                <i class="fa-solid fa-certificate fs-3 text-warning"></i>
+            <div class="bg-warning sponsored-icon position-absolute top-0 end-0 mt-1 d-flex align-items-center">
+                <i class="fa-solid fa-certificate"></i>
+                <span class="ms-1 fw-bold">
+                    PRO
+                </span>
             </div>
         </span>
-        <div>
-            <div class="doctor-card-head mb-3 d-flex align-items-center position-relative">
+
+        <div class="pt-2">
+            <div class="doctor-card-head mb-3 d-flex align-items-center position-relative"
+                :class="(doc.sponsors != null && doc.sponsors[0].type != 'noSponsor') ? 'pro-user' : ''">
                 <img class="h-100" v-if="doc.profile != null && doc.profile.picture.startsWith('placeholder')"
                     :src="`http://127.0.0.1:8000/storage/${doc.profile.picture}`" :alt="doc.profile.picture">
                 <img v-else-if="doc.profile != null" :src="doc.profile.picture">
@@ -62,10 +69,16 @@ export default {
 <style lang="scss" scoped>
 @use '../../styles/partials/variables' as *;
 
+
+.pro-doctor-card {
+    border: 2px solid $pro-user-color !important;
+}
+
 div.doctor-card {
     min-height: 300px;
     border: 2px solid $main-doc-color;
     background-color: white;
+
 
     .doctor-card-head {
         height: 120px;
@@ -95,8 +108,25 @@ div.doctor-card {
 
     }
 
+    div.pro-user {
+        img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+            border: 2px solid $pro-user-color;
+        }
+    }
 
 }
+
+div.sponsored-icon {
+    font-size: 1rem !important;
+    padding: .2rem .5rem;
+    border-radius: 3rem;
+}
+
 
 @media screen and (max-width: 480px) {
     div.doctor-card {

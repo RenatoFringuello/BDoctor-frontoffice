@@ -59,7 +59,7 @@ export default {
     <section id="doctor-list">
 
         <!-- TO DO: REMOVE ALL v-if "doc.profile != null" AFTER FIX THE BUGS ON BACK-END -->
-        <div class="container">
+        <div class="container-fluid">
             <h1 class="pb-4 text-light text-uppercase fw-bold">
                 {{ (store.specializationSelected != '') ? store.specializationSelected : 'Select a Specilization' }}
             </h1>
@@ -81,7 +81,7 @@ export default {
                             <div class="row">
                                 <div class="col-7 m-auto">
                                     <img src="https://platform.docplanner.com/img/general/ilustrations/empty_search.svg"
-                                    alt="Doctors not found" class="no-result-img w-100 img-fluid mb-3">
+                                        alt="Doctors not found" class="no-result-img w-100 img-fluid mb-3">
                                 </div>
                             </div>
                             <p class="text-white fs-3 text-center">No results</p>
