@@ -77,8 +77,10 @@ export default {
                             <DoctorCard :doc="doc" />
                         </div>
 
-                        <div class="col-12" v-else>
-                            <p class="text-white fs-3 text-center w-100 bg-danger">No results</p>
+                        <div class="col-12 text-center" v-else>
+                            <img src="https://platform.docplanner.com/img/general/ilustrations/empty_search.svg"
+                                alt="Doctors not found" class="no-result-img">
+                            <p class="text-white fs-3 text-center w-100">No results</p>
                         </div>
                         <!-- END DOCTORS CARD -->
 
@@ -153,6 +155,11 @@ div.doctor-card {
     }
 
 
+}
+
+img.no-result-img {
+    width: 500px;
+    height: 500px;
 }
 
 .pagination-disable {
