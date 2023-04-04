@@ -1,45 +1,31 @@
 <script>
 import { store } from '../store';
 import { useRoute } from 'vue-router';
-import axios, { all } from 'axios';
 
 import DoctorsReview from '../components/Doctors/DoctorsReview.vue';
 import DoctorsMessage from '../components/Doctors/DoctorsMessage.vue';
+import AppLoader from '../components/AppLoader.vue';
 
 export default {
     name: 'AppSingleDoctor',
     components: {
         DoctorsReview,
         DoctorsMessage,
+        AppLoader,
     },
     data() {
         return {
             store,
-            doctorData: [],
         }
     },
-    methods: {
-        getSingleDoctor() {
-            const route = useRoute();
-
-            axios.get(`http://127.0.0.1:8000/api/doctors/${route.params.id}`, {
-            })
-                .then((response) => {
-                    this.doctorData = response.data.results;
-                    // console.log(response.data.results); //To remove
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-        },
-    },
     created() {
-        this.getSingleDoctor();
+        const route = useRoute();
+        this.store.getDataApi(`doctors/${route.params.id}`);
     },
 }
 </script>
 <template>
-    <div class="pt-3 pb-5">
+    <div v-if="store.singleDoctor.length != 0" class="pt-3 pb-5">
         <div class="container">
             <div class="row g-3">
                 <!-- Info Doctor -->
@@ -48,26 +34,26 @@ export default {
                         <div class="row">
                             <!-- Profile Pictures -->
                             <div class="col-12 col-xl-4">
-                                <img v-if="doctorData.profile.picture.startsWith('placeholder')"
-                                    :src="`http://127.0.0.1:8000/storage/${doctorData.profile.picture}`"
-                                    :alt="doctorData.profile.picture">
-                                <img v-else :src="doctorData.profile.picture">
+                                <img v-if="store.singleDoctor.profile.picture.startsWith('placeholder')"
+                                    :src="`http://127.0.0.1:8000/storage/${store.singleDoctor.profile.picture}`"
+                                    :alt="store.singleDoctor.profile.picture">
+                                <img v-else :src="store.singleDoctor.profile.picture">
                             </div>
                             <!-- Name and lastname -->
                             <div class="col-12 col-xl-8 ps-5 d-flex justify-content-center flex-column">
-                                <h1 class="mb-2">Dott. {{ doctorData.name }} {{ doctorData.lastname }}</h1>
+                                <h1 class="mb-2">Dott. {{ store.singleDoctor.name }} {{ store.singleDoctor.lastname }}</h1>
                                 <p class="specializations">
                                     <span class="text-uppercase mb-5"
-                                        v-for="specialization in doctorData.profile.specializations">{{
+                                        v-for="specialization in store.singleDoctor.profile.specializations">{{
                                             specialization.name
                                         }} - </span>
                                 </p>
                                 <div class="star-review mt-2">
                                     <!-- Generate stars -->
                                     <div class="d-flex align-items-center">
-                                        <div v-for="star in store.getStars(doctorData.reviews_avg_rating)" class="star"
+                                        <div v-for="star in store.getStars(store.singleDoctor.reviews_avg_rating)" class="star"
                                             :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
-                                        <span>({{ doctorData.reviews_count }})</span>
+                                        <span>({{ store.singleDoctor.reviews_count }})</span>
                                     </div>
                                 </div>
                             </div>
@@ -82,21 +68,20 @@ export default {
                                     <ul>
                                         <li>
                                             <i class="fa-solid fa-envelope me-3"></i>
-                                            <span>{{ doctorData.email }}</span>
+                                            <span>{{ store.singleDoctor.email }}</span>
                                         </li>
                                         <li>
                                             <i class="fa-solid fa-phone me-3"></i>
-                                            <span v-if="doctorData.profile.telephone">{{ doctorData.profile.telephone
-                                            }}</span>
+                                            <span v-if="store.singleDoctor.profile.telephone">{{ store.singleDoctor.profile.telephone}}</span>
                                             <span v-else> - - - </span>
                                         </li>
                                         <li>
                                             <i class="fa-solid fa-location-dot me-3"></i>
-                                            <span>{{ doctorData.profile.address }}</span>
+                                            <span>{{ store.singleDoctor.profile.address }}</span>
                                         </li>
                                         <li>
                                             <!-- da modificare -->
-                                            <a :href="`/doctor/${doctorData.id}/cv.pdf`" class="btn doc-btn">
+                                            <a :href="`/doctor/${store.singleDoctor.id}/cv.pdf`" class="btn doc-btn">
                                                 <i class="fa-solid fa-file-arrow-down me-3"></i>
                                                 <span>Download CV</span>
                                             </a>
@@ -107,14 +92,14 @@ export default {
                                 <!-- Bio -->
                                 <p class="box rounded-2 p-2">
                                     <div class="fw-bold mb-2">Bio:</div>
-                                    <span v-if="doctorData.profile.bio">{{ doctorData.profile.bio }}</span>
+                                    <span v-if="store.singleDoctor.profile.bio">{{ store.singleDoctor.profile.bio }}</span>
                                     <span v-else> - - - </span>
                                 </p>
 
                                 <!-- Services -->
                                 <p class="box rounded-2 p-2">
                                     <div class="fw-bold mb-2">My services:</div>
-                                    <span v-if="doctorData.profile.services">{{ doctorData.profile.services }}</span>
+                                    <span v-if="store.singleDoctor.profile.services">{{ store.singleDoctor.profile.services }}</span>
                                     <span v-else> - - - </span>
 
                                 </p>
@@ -133,7 +118,7 @@ export default {
                         </h2>
                         <div class="row g-3">
                             <!-- Generate Reviews -->
-                            <div class="col-12" v-for="review in doctorData.reviews">
+                            <div class="col-12" v-for="review in store.singleDoctor.reviews">
 
                                 <div class="box rounded-2 p-2">
                                     <h4 class="mb-2">{{ review.name }} {{ review.lastname }}</h4>
@@ -170,6 +155,7 @@ export default {
             </div>
         </div>
     </div>
+    <AppLoader color="white" v-else/>
 </template>
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
