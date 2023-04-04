@@ -51,8 +51,9 @@ export default {
                                 <div class="star-review mt-2">
                                     <!-- Generate stars -->
                                     <div class="d-flex align-items-center">
-                                        <div v-for="star in store.getStars(store.singleDoctor.reviews_avg_rating)" class="star"
-                                            :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
+                                        <div v-for="star in store.getStars(store.singleDoctor.reviews_avg_rating)"
+                                            class="star" :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''">
+                                        </div>
                                         <span>({{ store.singleDoctor.reviews_count }})</span>
                                     </div>
                                 </div>
@@ -72,7 +73,8 @@ export default {
                                         </li>
                                         <li>
                                             <i class="fa-solid fa-phone me-3"></i>
-                                            <span v-if="store.singleDoctor.profile.telephone">{{ store.singleDoctor.profile.telephone}}</span>
+                                            <span v-if="store.singleDoctor.profile.telephone">{{
+                                                store.singleDoctor.profile.telephone }}</span>
                                             <span v-else> - - - </span>
                                         </li>
                                         <li>
@@ -91,16 +93,17 @@ export default {
 
                                 <!-- Bio -->
                                 <p class="box rounded-2 p-2">
-                                    <div class="fw-bold mb-2">Bio:</div>
-                                    <span v-if="store.singleDoctor.profile.bio">{{ store.singleDoctor.profile.bio }}</span>
-                                    <span v-else> - - - </span>
+                                <div class="fw-bold mb-2">Bio:</div>
+                                <span v-if="store.singleDoctor.profile.bio">{{ store.singleDoctor.profile.bio }}</span>
+                                <span v-else> - - - </span>
                                 </p>
 
                                 <!-- Services -->
                                 <p class="box rounded-2 p-2">
-                                    <div class="fw-bold mb-2">My services:</div>
-                                    <span v-if="store.singleDoctor.profile.services">{{ store.singleDoctor.profile.services }}</span>
-                                    <span v-else> - - - </span>
+                                <div class="fw-bold mb-2">My services:</div>
+                                <span v-if="store.singleDoctor.profile.services">{{ store.singleDoctor.profile.services
+                                }}</span>
+                                <span v-else> - - - </span>
 
                                 </p>
 
@@ -127,7 +130,6 @@ export default {
                                     <div class="d-flex mb-2">
                                         <div v-for="star in store.getStars(review.rating)" class="star"
                                             :class="(star === 0.5) ? 'half' : (star === 0) ? 'disabled' : ''"></div>
-                                        <span>({{ review.rating / 2 }})</span>
                                     </div>
                                     <p class="m-0">
                                         {{ review.content }}
@@ -155,7 +157,7 @@ export default {
             </div>
         </div>
     </div>
-    <AppLoader color="white" v-else/>
+    <AppLoader color="white" v-else />
 </template>
 <style lang="scss" scoped>
 @use '../styles/general.scss' as *;
@@ -168,7 +170,7 @@ div.box-form {
 }
 
 
-.box{
+.box {
     border: 2px solid $main-doc-color;
 }
 
@@ -199,5 +201,4 @@ section#doctor-info {
             }
         }
     }
-}
-</style>
+}</style>
