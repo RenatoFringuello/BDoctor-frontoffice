@@ -59,7 +59,7 @@ export default {
     <section id="doctor-list">
 
         <!-- TO DO: REMOVE ALL v-if "doc.profile != null" AFTER FIX THE BUGS ON BACK-END -->
-        <div class="container-fluid px-5">
+        <div class="container">
             <h1 class="pb-4 text-light text-uppercase fw-bold">
                 {{ (store.specializationSelected != '') ? store.specializationSelected : 'Select a Specilization' }}
             </h1>

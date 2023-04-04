@@ -180,6 +180,7 @@ section#doctor-info {
         height: 280px;
         border-radius: 50%;
         border: 10px solid $main-doc-color;
+        object-fit: cover;
 
     }
 
@@ -201,4 +202,5 @@ section#doctor-info {
             }
         }
     }
-}</style>
+}
+</style>
