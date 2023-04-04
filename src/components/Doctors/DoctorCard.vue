@@ -15,17 +15,7 @@ export default {
     <div class="doctor-card p-4 rounded-5 position-relative d-flex flex-column justify-content-between h-100"
         :class="(doc.sponsors != null && doc.sponsors[0].type != 'noSponsor') ? 'pro-doctor-card' : ''">
 
-        <span class="fs-5 mb-2 ms-1 position-absolute top-0 end-0 me-3"
-            v-if="doc.sponsors != null && doc.sponsors[0].type != 'noSponsor'">
-            <div class="bg-warning sponsored-icon position-absolute top-0 end-0 mt-1 d-flex align-items-center">
-                <i class="fa-solid fa-certificate"></i>
-                <span class="ms-1 fw-bold">
-                    PRO
-                </span>
-            </div>
-        </span>
-
-        <div class="pt-2">
+        <div>
             <div class="doctor-card-head mb-3 d-flex align-items-center position-relative"
                 :class="(doc.sponsors != null && doc.sponsors[0].type != 'noSponsor') ? 'pro-user' : ''">
                 <img class="h-100" v-if="doc.profile != null && doc.profile.picture.startsWith('placeholder')"
@@ -46,6 +36,13 @@ export default {
                         <span>({{ doc.reviews_count }})</span>
                     </div>
                 </div>
+
+                <!-- pro badge -->
+                <div class="position-absolute top-0 end-0 bg-warning sponsored-icon d-flex align-items-center"
+                    v-if="doc.sponsors != null && doc.sponsors[0].type != 'noSponsor'">
+                    <i class="fa-solid fa-certificate"></i>
+                    <span class="ms-1 fw-bold text-uppercase">Pro</span>
+                </div>
             </div>
             <p class="mb-3" v-if="doc.profile != null">
                 {{ doc.profile.services.substring(0, 230) + '...' }}
@@ -53,7 +50,7 @@ export default {
         </div>
 
         <!-- Contact -->
-        <div class="doctor-card-body">
+        <div class="doctor-card-body d-flex justify-content-between">
             <span v-if="doc.profile != null" class="text-uppercase me-3">
                 <i class="fa-solid fa-location-dot"></i>
                 {{ doc.profile.address }}
