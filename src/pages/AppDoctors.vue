@@ -32,10 +32,10 @@ export default {
             }
             this.getPage();
         },
-        getPage(){
+        getPage() {
             this.store.getDataApi('doctors', {
-                params:{
-                    specializations : this.store.specializationSelected,
+                params: {
+                    specializations: this.store.specializationSelected,
                     page: this.page,
                     sortByAvg: 0,
                     sortByCount: 0,
@@ -44,10 +44,10 @@ export default {
         }
     },
     created() {
-        if(this.store.specializationSelected != ''){
+        if (this.store.specializationSelected != '') {
             this.store.getDataApi('doctors', {
-                params:{
-                    specializations : this.store.specializationSelected,
+                params: {
+                    specializations: this.store.specializationSelected,
                 }
             });
         }
@@ -59,9 +59,9 @@ export default {
     <section id="doctor-list">
 
         <!-- TO DO: REMOVE ALL v-if "doc.profile != null" AFTER FIX THE BUGS ON BACK-END -->
-        <div class="container">
+        <div class="container-fluid px-5">
             <h1 class="pb-4 text-light text-uppercase fw-bold">
-                {{ (store.specializationSelected!= '') ? store.specializationSelected : 'Select a Specilization' }}
+                {{ (store.specializationSelected != '') ? store.specializationSelected : 'Select a Specilization' }}
             </h1>
             <div class="row g-3">
                 <div class="col-12 col-xl-3">
