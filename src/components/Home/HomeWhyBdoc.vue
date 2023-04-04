@@ -1,25 +1,44 @@
 <script>
+import {store} from '../../store'
 export default {
     name: 'HomeWhyBdoc.',
     data() {
         return {
+            store,
+            stats : [],
             whyList: [
                 {
-                    title: 'Our Doctors',
-                    data: '+200K'
+                    title:'Our Doctors',
+                    data:''
                 },
                 {
-                    title: 'Our Patients',
-                    data: '+10.000K'
+                    title:'Our Patients',
+                    data:''
                 },
                 {
-                    title: 'Specializations',
-                    data: '+30'
-                },
-
+                    title:'Specializations',
+                    data:''
+                }
             ]
         }
     },
+    methods: {
+        getFormat(num){
+            const format = ['Bil', 'Mil', 'k'];
+            // num *= 10000000;
+            for (let i = 0; i < format.length; i++) {
+                let range = Math.pow(1000, format.length - i);
+                console.log(range);
+                if( num >= range){
+                    return `${num / range} ${format[i]}`;
+                }
+            }
+            return num;
+        }
+    },
+    created(){
+        this.store.getDataApi('stats');
+    }
 }
 </script>
 
@@ -29,13 +48,19 @@ export default {
             <div class="row gy-4 gy-lg-0 py-5">
                 <h2 class="section-title">Why BDoctor?</h2>
                 <div class="row gy-4 gy-lg-0 m-0">
-                    <div class="col-12 col-lg-4" v-for="whyElement in whyList">
+                    <div class="col-12 col-lg-4" v-for="whyElement, i in  whyList">
                         <div class="info-box card-shadow d-flex justify-content-center align-items-center flex-column">
                             <h3 class="text-center mb-3">
-                                {{ whyElement.title }}
+                                {{ whyElement.name }}
                             </h3>
-                            <p class="text-center m-0">
-                                {{ whyElement.data }}
+                            <p v-if="i == 0" class="text-center m-0">
+                                + {{ getFormat(store.stats.nDoctors) }}
+                            </p>
+                            <p v-else-if="i == 1" class="text-center m-0">
+                                + {{ getFormat(store.stats.nCustomers) }}
+                            </p>
+                            <p v-else class="text-center m-0">
+                                + {{ getFormat(store.stats.nSpecializations) }}
                             </p>
                         </div>
                     </div>

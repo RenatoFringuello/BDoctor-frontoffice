@@ -34,6 +34,7 @@ export const store = reactive({
     specializationSelected: '',
     singleDoctor: [],
     doctorSponsored: [],
+    stats: [],
 
     getDataApi(location, params = { params:{} }, apiUri = 'http://127.0.0.1:8000/api/') {
 
@@ -61,9 +62,12 @@ export const store = reactive({
                     case 'sponsored':
                         store.doctorSponsored = this.dataraw;
                         break;
-                    }
+
+                    case 'stats':
+                        return store.stats = this.dataraw;
+                        break;
                 }
-            );
+            });
     },
 
     // Create stars review
